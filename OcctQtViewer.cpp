@@ -19,6 +19,10 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE
 
+#include <QApplication>
+#include <QMessageBox>
+#include <QMouseEvent>
+
 #ifdef _WIN32
   #include <windows.h>
 #endif
@@ -27,9 +31,7 @@
 #include "OcctQtViewer.h"
 
 #include <Standard_WarningsDisable.hxx>
-#include <QApplication>
-#include <QMessageBox>
-#include <QMouseEvent>
+
 #include <Standard_WarningsRestore.hxx>
 
 #include <AIS_Shape.hxx>
@@ -196,7 +198,7 @@ OcctQtViewer::OcctQtViewer (QWidget* theParent)
   // lets QOpenGLWidget to manage buffer swap
   aDriver->ChangeOptions().buffersNoSwap = true;
   // don't write into alpha channel
-  aDriver->ChangeOptions().buffersOpaqueAlpha = true;
+  //aDriver->ChangeOptions().buffersOpaqueAlpha = true;
   // offscreen FBOs should be always used
   aDriver->ChangeOptions().useSystemBuffer = false;
 
@@ -325,11 +327,14 @@ void OcctQtViewer::initializeGL()
     return;
   }
 
+  Handle(Aspect_RenderingContext) *aR = nullptr;
+
   Handle(Aspect_NeutralWindow) aWindow = Handle(Aspect_NeutralWindow)::DownCast (myView->Window());
   if (!aWindow.IsNull())
   {
     aWindow->SetSize (aViewSize.x(), aViewSize.y());
-    myView->SetWindow (aWindow, aGlCtx->RenderingContext());
+    myView->SetWindow (aWindow, (Aspect_RenderingContext) glXGetCurrentContext());
+
     dumpGlInfo (true);
   }
   else
@@ -345,7 +350,7 @@ void OcctQtViewer::initializeGL()
   #endif
     aWindow->SetNativeHandle (aNativeWin);
     aWindow->SetSize (aViewSize.x(), aViewSize.y());
-    myView->SetWindow (aWindow, aGlCtx->RenderingContext());
+    myView->SetWindow (aWindow, (Aspect_RenderingContext) glXGetCurrentContext());
     dumpGlInfo (true);
 
     myContext->Display (myViewCube, 0, 0, false);
@@ -504,7 +509,7 @@ void OcctQtViewer::paintGL()
 
   Graphic3d_Vec2i aViewSizeOld;
   //const QRect aRect = rect(); Graphic3d_Vec2i aViewSizeNew(aRect.right() - aRect.left(), aRect.bottom() - aRect.top());
-  Graphic3d_Vec2i aViewSizeNew = aDefaultFbo->GetVPSize();
+  Graphic3d_Vec2i aViewSizeNew(aDefaultFbo->GetVPSizeX(),aDefaultFbo->GetVPSizeY());
   Handle(Aspect_NeutralWindow) aWindow = Handle(Aspect_NeutralWindow)::DownCast (myView->Window());
   aWindow->Size (aViewSizeOld.x(), aViewSizeOld.y());
   if (aViewSizeNew != aViewSizeOld)

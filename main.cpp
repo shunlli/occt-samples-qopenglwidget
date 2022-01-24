@@ -19,9 +19,6 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE
 
-#include "OcctQtViewer.h"
-
-#include <Standard_WarningsDisable.hxx>
 #include <QApplication>
 #include <QDesktopWidget>
 #include <QSurfaceFormat>
@@ -34,9 +31,13 @@
 #include <QVBoxLayout>
 #include <QPushButton>
 #include <QSlider>
-#include <Standard_WarningsRestore.hxx>
 
+
+#include <Standard_WarningsRestore.hxx>
 #include <Standard_Version.hxx>
+#include <Standard_WarningsDisable.hxx>
+
+#include "OcctQtViewer.h"
 
 //! Main application window.
 class MyMainWindow : public QMainWindow
@@ -101,7 +102,7 @@ public:
             const float aVal = theValue / 255.0f;
             const Quantity_Color aColor (aVal, aVal, aVal, Quantity_TOC_sRGB);
             //myViewer->View()->SetBackgroundColor (aColor);
-            myViewer->View()->SetBgGradientColors (aColor, Quantity_NOC_BLACK, Aspect_GradientFillMethod_Elliptical);
+            myViewer->View()->SetBgGradientColors (aColor, Quantity_NOC_BLACK, Aspect_GFM_DIAG1);
             myViewer->View()->Invalidate();
             myViewer->update();
           });

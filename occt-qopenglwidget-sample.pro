@@ -2,13 +2,19 @@ TEMPLATE = app
 QT += widgets
 CONFIG += console
 
+# Opencascade
+LIBS += -L/usr/local/lib/
+
+INCLUDEPATH +=  /usr/local/include/opencascade/ \
+                /usr/include/ \
+                /usr/local/lib/
+
 # source code of the sample
 HEADERS = OcctQtViewer.h
 SOURCES = main.cpp \
           OcctQtViewer.cpp
 OTHER_FILES = LICENSE.md\
-              ReadMe.md \
-              custom.pri.template
+              ReadMe.md
 
 # target configuration
 MY_TARGET_ABI = $${QMAKE_TARGET.arch}
