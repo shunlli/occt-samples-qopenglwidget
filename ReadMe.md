@@ -1,4 +1,4 @@
-OCCT QOpenGLWidget sample
+OCCT QOpenGLWidget sample for LINUX
 ==================
 
 This sample demonstrates how to use Open CASCADE Technology (OCCT) 3D Viewer within a window created using Qt5 on Windows and Linux platforms.
