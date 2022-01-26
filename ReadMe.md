@@ -6,7 +6,7 @@ window created using Qt5 on Windows and Linux platforms.
 OpenGL-based OCCT viewer is embedded into Qt5 Widgets application via `QOpenGLWidget` widget.
 
 OCCT QOpenGLWidget sample. Gui designer widget coding.
-=============
+==================
 
 ![occt_widget](https://user-images.githubusercontent.com/44880102/151247897-0e7f69ef-58fa-453a-8ffb-3e2d0e3b8838.jpg)
 
@@ -24,7 +24,7 @@ OCCT QOpenGLWidget sample. Gui designer widget coding.
     - Print the actual opencascade performance
     
 OCCT QOpenGLWidget sample. Parametric widget coding.
-=============
+==================
 
 ![occt-qopenglwidget-sample-wnt](https://user-images.githubusercontent.com/44880102/151248072-c18aebc2-86af-4cc6-9bfa-e6a94649db45.png)
 
