@@ -9,7 +9,3 @@ https://github.com/grotius-cnc/Linux-Pro/releases/download/1.0.0/opencascade.deb
 # Qt dedigner installer :
 
 https://github.com/grotius-cnc/Linux-Pro/releases/download/1.0.0/qt-creator.deb
-
-# Build the project :
-
-$ ~/build-occ_gui_app-Desktop-Debug/make 
