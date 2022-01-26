@@ -8,6 +8,8 @@ OpenGL-based OCCT viewer is embedded into Qt5 Widgets application via `QOpenGLWi
 OCCT QOpenGLWidget sample. Gui designer widget coding.
 ==================
 
+https://img.shields.io/badge/coder-skynet%20cyberdyne-blue
+
 ![occt_widget](https://user-images.githubusercontent.com/44880102/151247897-0e7f69ef-58fa-453a-8ffb-3e2d0e3b8838.jpg)
 
     Specs:
