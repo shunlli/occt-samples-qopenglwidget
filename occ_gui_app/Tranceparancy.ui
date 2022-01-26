@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>Tranceparancy</class>
+ <widget class="QDialog" name="Tranceparancy">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>627</width>
-    <height>415</height>
+    <width>256</width>
+    <height>74</height>
    </rect>
   </property>
   <property name="palette">
@@ -453,176 +453,73 @@
    </palette>
   </property>
   <property name="windowTitle">
-   <string>occt widget</string>
+   <string>Tranceparancy dialog</string>
   </property>
-  <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout"/>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>627</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="palette">
-    <palette>
-     <active>
-      <colorrole role="ToolTipText">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>255</red>
-         <green>255</green>
-         <blue>255</blue>
-        </color>
-       </brush>
-      </colorrole>
-     </active>
-     <inactive>
-      <colorrole role="ToolTipText">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>255</red>
-         <green>255</green>
-         <blue>255</blue>
-        </color>
-       </brush>
-      </colorrole>
-     </inactive>
-     <disabled>
-      <colorrole role="ToolTipText">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>255</red>
-         <green>255</green>
-         <blue>255</blue>
-        </color>
-       </brush>
-      </colorrole>
-     </disabled>
-    </palette>
-   </property>
-   <widget class="QMenu" name="menuView">
-    <property name="title">
-     <string>Options</string>
-    </property>
-    <widget class="QMenu" name="menuview">
-     <property name="autoFillBackground">
-      <bool>true</bool>
-     </property>
-     <property name="title">
-      <string>view</string>
-     </property>
-     <widget class="QMenu" name="menushow_boundary">
-      <property name="title">
-       <string>boundary</string>
-      </property>
-      <addaction name="actionboundary_show"/>
-      <addaction name="actionboundary_hide"/>
-     </widget>
-     <widget class="QMenu" name="menusolid">
-      <property name="title">
-       <string>solid</string>
-      </property>
-      <addaction name="actionwireframe"/>
-      <addaction name="actionshaded"/>
-     </widget>
-     <widget class="QMenu" name="menumodel">
-      <property name="title">
-       <string>model</string>
-      </property>
-      <addaction name="actionorthographic"/>
-      <addaction name="actionperspective"/>
-     </widget>
-     <widget class="QMenu" name="menucube">
-      <property name="title">
-       <string>cube</string>
-      </property>
-      <addaction name="actioncube_hide"/>
-      <addaction name="actioncube_show"/>
-     </widget>
-     <widget class="QMenu" name="menutranceparancy">
-      <property name="title">
-       <string>tranceparancy</string>
-      </property>
-      <addaction name="actiontranceparancy_dialog"/>
-     </widget>
-     <widget class="QMenu" name="menutrihedron">
-      <property name="title">
-       <string>triedron</string>
-      </property>
-      <addaction name="actiontriedron_hide"/>
-      <addaction name="actiontriedron_show"/>
-     </widget>
-     <addaction name="menusolid"/>
-     <addaction name="menushow_boundary"/>
-     <addaction name="menumodel"/>
-     <addaction name="menucube"/>
-     <addaction name="menutranceparancy"/>
-     <addaction name="menutrihedron"/>
-    </widget>
-    <addaction name="menuview"/>
-   </widget>
-   <addaction name="menuView"/>
-  </widget>
-  <action name="actionboundary_show">
-   <property name="text">
-    <string>boundary show</string>
-   </property>
-  </action>
-  <action name="actionboundary_hide">
-   <property name="text">
-    <string>boundary hide</string>
-   </property>
-  </action>
-  <action name="actionwireframe">
-   <property name="text">
-    <string>wireframe</string>
-   </property>
-  </action>
-  <action name="actionshaded">
-   <property name="text">
-    <string>shaded</string>
-   </property>
-  </action>
-  <action name="actionorthographic">
-   <property name="text">
-    <string>orthographic</string>
-   </property>
-  </action>
-  <action name="actionperspective">
-   <property name="text">
-    <string>perspective</string>
-   </property>
-  </action>
-  <action name="actioncube_hide">
-   <property name="text">
-    <string>cube hide</string>
-   </property>
-  </action>
-  <action name="actioncube_show">
-   <property name="text">
-    <string>cube show</string>
-   </property>
-  </action>
-  <action name="actiontranceparancy_dialog">
-   <property name="text">
-    <string>tranceparancy dialog</string>
-   </property>
-  </action>
-  <action name="actiontriedron_hide">
-   <property name="text">
-    <string>triedron hide</string>
-   </property>
-  </action>
-  <action name="actiontriedron_show">
-   <property name="text">
-    <string>triedron show</string>
-   </property>
-  </action>
+  <layout class="QGridLayout" name="gridLayout_2">
+   <item row="0" column="0">
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="0">
+      <widget class="QSpinBox" name="spinBox">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="maximum">
+        <number>100</number>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1" colspan="3">
+      <widget class="QScrollBar" name="horizontalScrollBar">
+       <property name="maximum">
+        <number>100</number>
+       </property>
+       <property name="pageStep">
+        <number>1</number>
+       </property>
+       <property name="value">
+        <number>80</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="invertedAppearance">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="3">
+      <widget class="QPushButton" name="pushButton_ok">
+       <property name="text">
+        <string>Ok</string>
+       </property>
+       <property name="icon">
+        <iconset resource="libicon/icons.qrc">
+         <normaloff>:/opinion-okay.png</normaloff>:/opinion-okay.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0" colspan="3">
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+  </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="libicon/icons.qrc"/>
+ </resources>
  <connections/>
 </ui>

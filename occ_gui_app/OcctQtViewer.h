@@ -19,6 +19,8 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE
 
+//! Edited by Skynet Cyberdyne 01-2022.
+
 #ifndef _OcctQtViewer_HeaderFile
 #define _OcctQtViewer_HeaderFile
 
@@ -61,12 +63,6 @@ public:
   //! Default widget size.
   virtual QSize sizeHint()        const override { return QSize(720, 480); }
 
-  //! Actual xyz mouse coordinates retrieved from the occt hovered shape.
-  gp_Pnt aMousePnt;
-
-  //! A bucket containing all shapes.
-  std::vector<Handle(AIS_InteractiveObject)> aShapeVec;
-
   //! Set the tranceparancy level of the shapevec.
   void set_tranceparancy(double value);
 
@@ -84,6 +80,20 @@ public:
   //! Shape preview mode.
   void show_as_wireframe();
   void show_as_shaded();
+
+  //! Triedron axis origin.
+  void show_triedron();
+  void hide_triedron();
+
+  //! Display mode.
+  void set_orthographic();
+  void set_perspective();
+
+  //! Actual xyz mouse coordinates retrieved by hovering a active shape.
+  gp_Pnt aMousePnt;
+
+  //! A bucket containing all shapes.
+  std::vector<Handle(AIS_InteractiveObject)> aShapeVec;
 
 protected: // OpenGL events
 
@@ -118,11 +128,8 @@ private:
   Handle(AIS_ViewCube)           myViewCube;
 
   GLint m_vaoHandle;
-
   QString myGlInfo;
   bool myIsCoreProfile;
-
-
 };
 
 #endif // _OcctQtViewer_HeaderFile

@@ -1,13 +1,43 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+//! Creator : Skynet Cyberdyne.
+//! Date    : 01-2021.
+//!
+//! The occt_viewer widget has it's own opengl interface, separated from qt opengl to
+//! avoid opengl entanglement.
+//!
+//! This widget has several implementation examples:
+//!
+//! 1. Xyz mouse coordinates mapped to the occt environment.
+//! 2. Transparant qt widget overlay.
+//! 3. Viewports, 3d, top, bottom, left, right, front, back.
+//! 4. Zoom to fit, zoom +, zoom -
+//! 5. Create a shape and set tranceparancy level.
+//! 6. Show shapes as wireframe or as shaded object.
+//! 7. Show or hide 3d navigation box.
+//! 8. Show or hide triedron.
+//! 9. Show shape in orthographic or perspective mode.
+//! 10. Show or hide shape boundary lines.
+//! 11. Print the actual opencascade performance.. // OcctQtViwer::show_specs;
+//!
+//! This example could be entirely be brought into one upper widget if you want to do so.
+//!
+//! 1.0 aMainWindow
+//!     2.O OcctQt upper widget -> QWidget
+//!         2.1 OcctQtcontrols  -> Qt opengl
+//!         2.2 OcctQtViewer    -> Occt opengl
+//!         2.3 Tranceparancy
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
+    //! Add the occt_viewer widget.
     QGridLayout *layout=new QGridLayout(occt_viewer);
+    //! Add the occt_control widget.
     layout->addWidget(occt_controls,0,0,Qt::AlignCenter);
     ui->gridLayout->addWidget(occt_viewer);
 
@@ -18,6 +48,7 @@ MainWindow::MainWindow(QWidget *parent)
     timer->start(50);
 }
 
+//! Destructor.
 MainWindow::~MainWindow()
 {
     delete ui;
@@ -45,16 +76,12 @@ void MainWindow::on_actionboundary_hide_triggered()
 
 void MainWindow::on_actionorthographic_triggered()
 {
-    occt_viewer->View()->Camera()->SetProjectionType (Graphic3d_Camera::Projection_Orthographic);
-    occt_viewer->View()->Redraw();
-    occt_viewer->update();
+    occt_viewer->set_orthographic();
 }
 
 void MainWindow::on_actionperspective_triggered()
 {
-    occt_viewer->View()->Camera()->SetProjectionType (Graphic3d_Camera::Projection_Perspective);
-    occt_viewer->View()->Redraw();
-    occt_viewer->update();
+    occt_viewer->set_perspective();
 }
 
 void MainWindow::on_actioncube_hide_triggered()
@@ -67,8 +94,25 @@ void MainWindow::on_actioncube_show_triggered()
     occt_viewer->show_cube();
 }
 
+void MainWindow::on_actiontriedron_hide_triggered()
+{
+    occt_viewer->hide_triedron();
+}
+
+void MainWindow::on_actiontriedron_show_triggered()
+{
+    occt_viewer->show_triedron();
+}
+
+void MainWindow::on_actiontranceparancy_dialog_triggered()
+{
+    transparancy->show();
+}
+
 void MainWindow::mainloop(){
 
+    //! Opencascade callback thread.
+    //! This thread can be used to process occt localtransformations etc.
     if(!occt_viewer->View().IsNull()){
 
         occt_controls->lbl_x->setText(QString::number(occt_viewer->aMousePnt.X(),'f',3));
@@ -114,33 +158,29 @@ void MainWindow::mainloop(){
             occt_viewer->View()->SetProj(V3d_TypeOfOrientation_Zup_AxoRight);
             occt_viewer->View()->FitAll(0.01,Standard_True);
         }
-        if(occt_controls->sl_tranceparancy->isSliderDown()){
-            double value=0.01*double(occt_controls->sl_tranceparancy->value());
-            occt_viewer->set_tranceparancy(value);
+        if(transparancy->isVisible()){
+            occt_viewer->set_tranceparancy(0.01*transparancy->value);
+            //! This is done here, otherwise it will not do a live update.
             occt_viewer->View()->Redraw();
+            occt_viewer->update();
         }
-
-
         if(!oneshot){
             occt_viewer->View()->SetProj(V3d_TypeOfOrientation_Zup_AxoRight);
-            double value=0.01*double(occt_controls->sl_tranceparancy->value());
+            double value=0.01*Tranceparancy().value;
             occt_viewer->set_tranceparancy(value);
             occt_viewer->View()->FitAll(0.01,Standard_True);
             occt_viewer->View()->Redraw();
             oneshot=1;
         }
-
     }
-
-
-
-
-
-    /// View as wireframe or shaded
-    //m_context->SetDisplayMode(AIS_WireFrame, Standard_False);
-    // m_context->SetDisplayMode(AIS_Shaded, Standard_False);
-
 }
+
+
+
+
+
+
+
 
 
 

@@ -8,18 +8,21 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    OcctQtControls.cpp \
     OcctQtViewer.cpp \
-    OcctQtcontrols.cpp \
+    Tranceparancy.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
+    OcctQtControls.h \
     OcctQtViewer.h \
-    OcctQtcontrols.h \
+    Tranceparancy.h \
     mainwindow.h
 
 FORMS += \
-    OcctQtcontrols.ui \
+    OcctQtControls.ui \
+    Tranceparancy.ui \
     mainwindow.ui
 
 # Occt inludes
@@ -39,3 +42,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     libicon/icons.qrc
+
+DISTFILES += \
+    readme.md

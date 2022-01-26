@@ -5,7 +5,8 @@
 #include <QGridLayout>
 #include <QTimer>
 #include <OcctQtViewer.h>
-#include <OcctQtcontrols.h>
+#include <OcctQtControls.h>
+#include <Tranceparancy.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -23,6 +24,7 @@ public:
 
     OcctQtViewer *occt_viewer=new OcctQtViewer();
     OcctQtControls *occt_controls=new OcctQtControls();
+    Tranceparancy *transparancy= new Tranceparancy();
 
 private slots:
 
@@ -42,6 +44,12 @@ private slots:
     void on_actioncube_hide_triggered();
 
     void on_actioncube_show_triggered();
+
+    void on_actiontranceparancy_dialog_triggered();
+
+    void on_actiontriedron_hide_triggered();
+
+    void on_actiontriedron_show_triggered();
 
 private:
     bool oneshot=0;

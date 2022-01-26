@@ -12,5 +12,7 @@
         <file>view-front.svg</file>
         <file>view-bottom.svg</file>
         <file>view-back.svg</file>
+        <file>opinion-no.png</file>
+        <file>opinion-okay.png</file>
     </qresource>
 </RCC>

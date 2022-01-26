@@ -19,6 +19,8 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE
 
+//! Edited by Skynet Cyberdyne 01-2021.
+
 #include <QApplication>
 #include <QMessageBox>
 #include <QMouseEvent>
@@ -185,10 +187,7 @@ Aspect_VKey qtKey2VKey (int theKey)
 }
 }
 
-// ================================================================
-// Function : OcctQtViewer
-// Purpose  :
-// ================================================================
+//! OcctQtViewer
 OcctQtViewer::OcctQtViewer (QWidget* theParent)
     : QOpenGLWidget (theParent),
       myIsCoreProfile (true)
@@ -196,26 +195,27 @@ OcctQtViewer::OcctQtViewer (QWidget* theParent)
     Handle(Aspect_DisplayConnection) aDisp = new Aspect_DisplayConnection();
     Handle(OpenGl_GraphicDriver) aDriver = new OpenGl_GraphicDriver (aDisp, false);
     aDriver->ChangeOptions().ffpEnable = Standard_False;
-    // aDriver->ChangeOptions().glslWarnings = Standard_True;
+    //! aDriver->ChangeOptions().glslWarnings = Standard_True;
     aDriver->ChangeOptions().buffersNoSwap = Standard_False;
 
-    // lets QOpenGLWidget to manage buffer swap
+    //! lets QOpenGLWidget to manage buffer swap
     aDriver->ChangeOptions().buffersNoSwap = true;
-    // don't write into alpha channel
-    //aDriver->ChangeOptions().buffersOpaqueAlpha = true;
-    // offscreen FBOs should be always used
+    //! don't write into alpha channel
+    //! aDriver->ChangeOptions().buffersOpaqueAlpha = true;
+    //! offscreen FBOs should be always used
     aDriver->ChangeOptions().useSystemBuffer = false;
 
-    // create viewer
+    //! create viewer
     myViewer = new V3d_Viewer (aDriver);
     myViewer->SetDefaultBackgroundColor (Quantity_NOC_GRAY);
     myViewer->SetDefaultLights();
     myViewer->SetLightOn();
-    //myViewer->ActivateGrid (Aspect_GT_Rectangular, Aspect_GDM_Lines);
+    //! myViewer->ActivateGrid (Aspect_GT_Rectangular, Aspect_GDM_Lines);
 
-    // create AIS context
+    //! create AIS context
     myContext = new AIS_InteractiveContext (myViewer);
 
+    //! 3D navigation cube.
     myViewCube = new AIS_ViewCube();
     myViewCube->SetViewAnimation (myViewAnimation);
     myViewCube->SetBoxColor(Quantity_NOC_GRAY75); //
@@ -227,17 +227,22 @@ OcctQtViewer::OcctQtViewer (QWidget* theParent)
     myViewCube->SetTransformPersistence(
                 new Graphic3d_TransformPers(
                     Graphic3d_TMF_TriedronPers,
-                    Aspect_TOTP_LEFT_UPPER,
+                    Aspect_TOTP_LEFT_LOWER,
                     Graphic3d_Vec2i(85, 85)));
 
-    // note - window will be created later within initializeGL() callback!
+    //! note - window will be created later within initializeGL() callback!
     myView = myViewer->CreateView();
     myView->SetImmediateUpdate (false);
-    // myView->ChangeRenderingParams().NbMsaaSamples = 4; // warning - affects performance
-    // myView->ChangeRenderingParams().ToShowStats = true;
-    // myView->ChangeRenderingParams().CollectedStats = (Graphic3d_RenderingParams::PerfCounters )
-    //         (Graphic3d_RenderingParams::PerfCounters_FrameRate
-    //         | Graphic3d_RenderingParams::PerfCounters_Triangles);
+
+    //! Print the actual opencascade performance.
+    bool show_specs=1;
+    if(show_specs){
+        myView->ChangeRenderingParams().NbMsaaSamples = 4; // warning - affects performance
+        myView->ChangeRenderingParams().ToShowStats = true;
+        myView->ChangeRenderingParams().CollectedStats = (Graphic3d_RenderingParams::PerfCounters )
+                (Graphic3d_RenderingParams::PerfCounters_FrameRate
+                 | Graphic3d_RenderingParams::PerfCounters_Triangles);
+    }
 
     //! Set model view as perspective.
     myView->Camera()->SetProjectionType (Graphic3d_Camera::Projection_Perspective);
@@ -245,19 +250,19 @@ OcctQtViewer::OcctQtViewer (QWidget* theParent)
     /// Show triedron. This is the 3d axis cross at the lower left of the screen.
     myView->TriedronDisplay(Aspect_TOTP_LEFT_LOWER, Quantity_NOC_GOLD, 0.08, V3d_ZBUFFER);
 
-    // Qt widget setup
+    //! Qt widget setup
     setMouseTracking (true);
-    setBackgroundRole (QPalette::NoRole); // or NoBackground
-    setFocusPolicy (Qt::StrongFocus); // set focus policy to threat QContextMenuEvent from keyboard
+    setBackgroundRole (QPalette::NoRole);   //! or NoBackground
+    setFocusPolicy (Qt::StrongFocus);       //! set focus policy to threat QContextMenuEvent from keyboard
     setUpdatesEnabled (true);
     setUpdateBehavior (QOpenGLWidget::NoPartialUpdate);
 
-    // OpenGL setup managed by Qt
+    //! OpenGL setup managed by Qt
     QSurfaceFormat aGlFormat;
     aGlFormat.setDepthBufferSize   (24);
     aGlFormat.setStencilBufferSize (8);
-    //aGlFormat.setOption (QSurfaceFormat::DebugContext, true);
-    //aGlFormat.setOption (QSurfaceFormat::DeprecatedFunctions, true);
+    //! aGlFormat.setOption (QSurfaceFormat::DebugContext, true);
+    //! aGlFormat.setOption (QSurfaceFormat::DeprecatedFunctions, true);
     if (myIsCoreProfile)
     {
         aGlFormat.setVersion (4, 5);
@@ -281,10 +286,7 @@ OcctQtViewer::OcctQtViewer (QWidget* theParent)
 
 }
 
-// ================================================================
-// Function : ~OcctQtViewer
-// Purpose  :
-// ================================================================
+//! Destructor ~OcctQtViewer
 OcctQtViewer::~OcctQtViewer()
 {
     // hold on X11 display connection till making another connection active by glXMakeCurrent()
@@ -298,15 +300,12 @@ OcctQtViewer::~OcctQtViewer()
     myView.Nullify();
     myViewer.Nullify();
 
-    // make active OpenGL context created by Qt
+    //! make active OpenGL context created by Qt
     makeCurrent();
     aDisp.Nullify();
 }
 
-// ================================================================
-// Function : dumpGlInfo
-// Purpose  :
-// ================================================================
+//! dumpGlInfo
 void OcctQtViewer::dumpGlInfo (bool theIsBasic)
 {
     TColStd_IndexedDataMapOfStringString aGlCapsDict;
@@ -328,10 +327,7 @@ void OcctQtViewer::dumpGlInfo (bool theIsBasic)
     myGlInfo = QString::fromUtf8 (anInfo.ToCString());
 }
 
-// ================================================================
-// Function : initializeGL
-// Purpose  :
-// ================================================================
+//! initializeGL
 #include <OpenGl_VertexBuffer.hxx>
 
 void OcctQtViewer::initializeGL()
@@ -388,19 +384,13 @@ void OcctQtViewer::initializeGL()
     }
 }
 
-// ================================================================
-// Function : closeEvent
-// Purpose  :
-// ================================================================
+//! closeEvent
 void OcctQtViewer::closeEvent (QCloseEvent* theEvent)
 {
     theEvent->accept();
 }
 
-// ================================================================
-// Function : keyPressEvent
-// Purpose  :
-// ================================================================
+//! keyPressEvent
 void OcctQtViewer::keyPressEvent (QKeyEvent* theEvent)
 {
     Aspect_VKey aKey = qtKey2VKey (theEvent->key());
@@ -421,10 +411,8 @@ void OcctQtViewer::keyPressEvent (QKeyEvent* theEvent)
     QOpenGLWidget::keyPressEvent (theEvent);
 }
 
-// ================================================================
-// Function : mousePressEvent
-// Purpose  :
-// ================================================================
+
+//! mousePressEvent
 void OcctQtViewer::mousePressEvent (QMouseEvent* theEvent)
 {
     QOpenGLWidget::mousePressEvent (theEvent);
@@ -440,10 +428,7 @@ void OcctQtViewer::mousePressEvent (QMouseEvent* theEvent)
     }
 }
 
-// ================================================================
-// Function : mouseReleaseEvent
-// Purpose  :
-// ================================================================
+//! mouseReleaseEvent
 void OcctQtViewer::mouseReleaseEvent (QMouseEvent* theEvent)
 {
     QOpenGLWidget::mouseReleaseEvent (theEvent);
@@ -459,10 +444,7 @@ void OcctQtViewer::mouseReleaseEvent (QMouseEvent* theEvent)
     }
 }
 
-// ================================================================
-// Function : mouseMoveEvent
-// Purpose  :
-// ================================================================
+//! mouseMoveEvent
 void OcctQtViewer::mouseMoveEvent (QMouseEvent* theEvent)
 {
     for(myContext->InitSelected(); myContext->MoreSelected(); myContext->NextSelected()){
@@ -483,10 +465,7 @@ void OcctQtViewer::mouseMoveEvent (QMouseEvent* theEvent)
     }
 }
 
-// ==============================================================================
-// function : wheelEvent
-// purpose  :
-// ==============================================================================
+//! wheelEvent
 void OcctQtViewer::wheelEvent (QWheelEvent* theEvent)
 {
     QOpenGLWidget::wheelEvent (theEvent);
@@ -498,20 +477,14 @@ void OcctQtViewer::wheelEvent (QWheelEvent* theEvent)
     }
 }
 
-// =======================================================================
-// function : updateView
-// purpose  :
-// =======================================================================
+//! updateView
 void OcctQtViewer::updateView()
 {
     update();
-    //if (window() != NULL) { window()->update(); }
+    //! if (window() != NULL) { window()->update(); }
 }
 
-// ================================================================
-// Function : paintGL
-// Purpose  :
-// ================================================================
+//! paintGL
 void OcctQtViewer::paintGL()
 {
     if (myView->Window().IsNull())
@@ -519,7 +492,7 @@ void OcctQtViewer::paintGL()
         return;
     }
 
-    // wrap FBO created by QOpenGLWidget
+    //! wrap FBO created by QOpenGLWidget
     Handle(OpenGl_GraphicDriver) aDriver = Handle(OpenGl_GraphicDriver)::DownCast (myContext->CurrentViewer()->Driver());
     const Handle(OpenGl_Context)& aGlCtx = aDriver->GetSharedContext();
     Handle(OpenGl_FrameBuffer) aDefaultFbo = aGlCtx->DefaultFrameBuffer();
@@ -538,7 +511,7 @@ void OcctQtViewer::paintGL()
     }
 
     Graphic3d_Vec2i aViewSizeOld;
-    //const QRect aRect = rect(); Graphic3d_Vec2i aViewSizeNew(aRect.right() - aRect.left(), aRect.bottom() - aRect.top());
+    //! const QRect aRect = rect(); Graphic3d_Vec2i aViewSizeNew(aRect.right() - aRect.left(), aRect.bottom() - aRect.top());
     Graphic3d_Vec2i aViewSizeNew(aDefaultFbo->GetVPSizeX(),aDefaultFbo->GetVPSizeY());
     Handle(Aspect_NeutralWindow) aWindow = Handle(Aspect_NeutralWindow)::DownCast (myView->Window());
     aWindow->Size (aViewSizeOld.x(), aViewSizeOld.y());
@@ -549,22 +522,19 @@ void OcctQtViewer::paintGL()
         myView->Invalidate();
     }
 
-    // flush pending input events and redraw the viewer
+    //! flush pending input events and redraw the viewer
     myView->InvalidateImmediate();
     FlushViewEvents (myContext, myView, true);
 }
 
-// ================================================================
-// Function : handleViewRedraw
-// Purpose  :
-// ================================================================
+//! handleViewRedraw
 void OcctQtViewer::handleViewRedraw (const Handle(AIS_InteractiveContext)& theCtx,
                                      const Handle(V3d_View)& theView)
 {
     AIS_ViewController::handleViewRedraw (theCtx, theView);
     if (myToAskNextFrame)
     {
-        // ask more frames for animation
+        //! ask more frames for animation
         updateView();
     }
 }
@@ -606,7 +576,6 @@ void OcctQtViewer::hide_boundary(){
     myView->Update();
 }
 
-
 //! Hide the navigation cube.
 void OcctQtViewer::hide_cube(){
     myContext->Erase(myViewCube, false);
@@ -619,9 +588,20 @@ void OcctQtViewer::show_cube(){
     myView->Update();
 }
 
+//! Show the trihedron
+void OcctQtViewer::show_triedron(){
+    myView->TriedronDisplay(Aspect_TOTP_LEFT_LOWER, Quantity_NOC_GOLD, 0.08, V3d_ZBUFFER);
+    myView->Update();
+}
+
+//! Hide the trihedron
+void OcctQtViewer::hide_triedron(){
+    myView->TriedronErase();
+    myView->Update();
+}
+
 //! Show as wireframe
 void OcctQtViewer::show_as_wireframe(){
-
     for(unsigned int i=0; i<aShapeVec.size(); i++){
         aShapeVec[i]->SetDisplayMode(AIS_WireFrame);
         myContext->Remove(aShapeVec[i],Standard_False);
@@ -633,7 +613,6 @@ void OcctQtViewer::show_as_wireframe(){
 
 //! Show as shaded
 void OcctQtViewer::show_as_shaded(){
-
     for(unsigned int i=0; i<aShapeVec.size(); i++){
         aShapeVec[i]->SetDisplayMode(AIS_Shaded);
         myContext->Remove(aShapeVec[i],Standard_False);
@@ -643,7 +622,19 @@ void OcctQtViewer::show_as_shaded(){
     myView->Update();
 }
 
+//! Display mode orthographic.
+void OcctQtViewer::set_orthographic(){
+    myView->Camera()->SetProjectionType (Graphic3d_Camera::Projection_Orthographic);
+    myView->Redraw();
+    myView->Update();
+}
 
+//! Display mode perspective.
+void OcctQtViewer::set_perspective(){
+    myView->Camera()->SetProjectionType (Graphic3d_Camera::Projection_Perspective);
+    myView->Redraw();
+    myView->Update();
+}
 
 
 
