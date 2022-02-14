@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>767</width>
-    <height>581</height>
+    <width>786</width>
+    <height>586</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -16,47 +16,501 @@
     <verstretch>0</verstretch>
    </sizepolicy>
   </property>
+  <property name="palette">
+   <palette>
+    <active>
+     <colorrole role="WindowText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Button">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>13</red>
+        <green>17</green>
+        <blue>23</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Light">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>19</red>
+        <green>25</green>
+        <blue>34</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Midlight">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>16</red>
+        <green>21</green>
+        <blue>28</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Dark">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>6</red>
+        <green>8</green>
+        <blue>11</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Mid">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>9</red>
+        <green>11</green>
+        <blue>15</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Text">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="BrightText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="ButtonText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>0</green>
+        <blue>0</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>13</red>
+        <green>17</green>
+        <blue>23</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Shadow">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>0</green>
+        <blue>0</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="AlternateBase">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>6</red>
+        <green>8</green>
+        <blue>11</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="ToolTipBase">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>220</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="ToolTipText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>0</green>
+        <blue>0</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="PlaceholderText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="128">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </active>
+    <inactive>
+     <colorrole role="WindowText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Button">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>13</red>
+        <green>17</green>
+        <blue>23</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Light">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>19</red>
+        <green>25</green>
+        <blue>34</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Midlight">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>16</red>
+        <green>21</green>
+        <blue>28</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Dark">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>6</red>
+        <green>8</green>
+        <blue>11</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Mid">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>9</red>
+        <green>11</green>
+        <blue>15</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Text">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="BrightText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="ButtonText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>0</green>
+        <blue>0</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>13</red>
+        <green>17</green>
+        <blue>23</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Shadow">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>0</green>
+        <blue>0</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="AlternateBase">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>6</red>
+        <green>8</green>
+        <blue>11</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="ToolTipBase">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>220</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="ToolTipText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>0</green>
+        <blue>0</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="PlaceholderText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="128">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </inactive>
+    <disabled>
+     <colorrole role="WindowText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>6</red>
+        <green>8</green>
+        <blue>11</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Button">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>13</red>
+        <green>17</green>
+        <blue>23</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Light">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>19</red>
+        <green>25</green>
+        <blue>34</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Midlight">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>16</red>
+        <green>21</green>
+        <blue>28</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Dark">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>6</red>
+        <green>8</green>
+        <blue>11</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Mid">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>9</red>
+        <green>11</green>
+        <blue>15</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Text">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>6</red>
+        <green>8</green>
+        <blue>11</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="BrightText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="ButtonText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>6</red>
+        <green>8</green>
+        <blue>11</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>13</red>
+        <green>17</green>
+        <blue>23</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>13</red>
+        <green>17</green>
+        <blue>23</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Shadow">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>0</green>
+        <blue>0</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="AlternateBase">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>13</red>
+        <green>17</green>
+        <blue>23</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="ToolTipBase">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>255</red>
+        <green>255</green>
+        <blue>220</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="ToolTipText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>0</green>
+        <blue>0</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="PlaceholderText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="128">
+        <red>255</red>
+        <green>255</green>
+        <blue>255</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </disabled>
+   </palette>
+  </property>
   <property name="mouseTracking">
    <bool>false</bool>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="libicon/icons.qrc">
+    <normaloff>:/arrow-up.png</normaloff>:/arrow-up.png</iconset>
+  </property>
   <layout class="QGridLayout" name="gridLayout_4">
    <item row="0" column="1">
     <layout class="QGridLayout" name="gridLayout">
-     <item row="0" column="10">
-      <widget class="QToolButton" name="toolButton_zoom_plus">
+     <item row="2" column="2">
+      <widget class="QToolButton" name="toolButton_snap_on">
+       <property name="toolTip">
+        <string>Snap analyser</string>
+       </property>
        <property name="text">
         <string>...</string>
        </property>
        <property name="icon">
         <iconset resource="libicon/icons.qrc">
-         <normaloff>:/zoom_plus.svg</normaloff>:/zoom_plus.svg</iconset>
+         <normaloff>:/sketcher/snapnon.PNG</normaloff>:/sketcher/snapnon.PNG</iconset>
        </property>
-       <property name="autoRepeat">
+       <property name="checkable">
         <bool>true</bool>
        </property>
-       <property name="autoRepeatDelay">
-        <number>50</number>
-       </property>
-       <property name="autoRepeatInterval">
-        <number>50</number>
-       </property>
       </widget>
      </item>
-     <item row="0" column="5">
-      <widget class="QToolButton" name="toolButton_zoom_front">
+     <item row="0" column="10">
+      <widget class="QToolButton" name="toolButton_zoom_top">
        <property name="text">
         <string>...</string>
        </property>
        <property name="icon">
         <iconset resource="libicon/icons.qrc">
-         <normaloff>:/view-front.svg</normaloff>:/view-front.svg</iconset>
+         <normaloff>:/view-top.svg</normaloff>:/view-top.svg</iconset>
        </property>
       </widget>
      </item>
-     <item row="0" column="9">
+     <item row="4" column="4">
+      <widget class="QToolButton" name="toolButton_plane_right">
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset resource="libicon/icons.qrc">
+         <normaloff>:/sketcher/plane_right.png</normaloff>:/sketcher/plane_right.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="11">
       <widget class="QToolButton" name="toolButton_zoom_extends">
        <property name="text">
         <string>...</string>
@@ -67,42 +521,29 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="2">
-      <widget class="QToolButton" name="toolButton_zoom_3d">
+     <item row="2" column="4">
+      <widget class="QToolButton" name="toolButton_snap_center">
        <property name="text">
         <string>...</string>
        </property>
        <property name="icon">
         <iconset resource="libicon/icons.qrc">
-         <normaloff>:/view-iso.svg</normaloff>:/view-iso.svg</iconset>
+         <normaloff>:/sketcher/snapcenter.PNG</normaloff>:/sketcher/snapcenter.PNG</iconset>
        </property>
       </widget>
      </item>
-     <item row="0" column="0">
-      <spacer name="horizontalSpacer">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>2000</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item row="0" column="6">
-      <widget class="QToolButton" name="toolButton_zoom_left">
+     <item row="2" column="3">
+      <widget class="QToolButton" name="toolButton_snap_end">
        <property name="text">
         <string>...</string>
        </property>
        <property name="icon">
         <iconset resource="libicon/icons.qrc">
-         <normaloff>:/view-left.svg</normaloff>:/view-left.svg</iconset>
+         <normaloff>:/sketcher/snapend.PNG</normaloff>:/sketcher/snapend.PNG</iconset>
        </property>
       </widget>
      </item>
-     <item row="0" column="3">
+     <item row="0" column="5">
       <widget class="QToolButton" name="toolButton_zoom_back">
        <property name="autoFillBackground">
         <bool>false</bool>
@@ -116,18 +557,84 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="4">
-      <widget class="QToolButton" name="toolButton_zoom_bottom">
+     <item row="0" column="3">
+      <widget class="QToolButton" name="toolButton_settings">
        <property name="text">
         <string>...</string>
        </property>
        <property name="icon">
         <iconset resource="libicon/icons.qrc">
-         <normaloff>:/view-bottom.svg</normaloff>:/view-bottom.svg</iconset>
+         <normaloff>:/settings.png</normaloff>:/settings.png</iconset>
        </property>
       </widget>
      </item>
-     <item row="0" column="11">
+     <item row="0" column="4">
+      <widget class="QToolButton" name="toolButton_zoom_3d">
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset resource="libicon/icons.qrc">
+         <normaloff>:/view-iso.svg</normaloff>:/view-iso.svg</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="3">
+      <widget class="QToolButton" name="toolButton_plane_top">
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset resource="libicon/icons.qrc">
+         <normaloff>:/sketcher/plane_top.png</normaloff>:/sketcher/plane_top.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="5">
+      <widget class="QToolButton" name="toolButton_snap_mid">
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset resource="libicon/icons.qrc">
+         <normaloff>:/sketcher/snapmiddle.PNG</normaloff>:/sketcher/snapmiddle.PNG</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="6">
+      <widget class="QToolButton" name="toolButton_snap_perpendicular">
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset resource="libicon/icons.qrc">
+         <normaloff>:/sketcher/snapperpendicular.PNG</normaloff>:/sketcher/snapperpendicular.PNG</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="7">
+      <widget class="QToolButton" name="toolButton_snap_intersection">
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset resource="libicon/icons.qrc">
+         <normaloff>:/sketcher/snapintersection.PNG</normaloff>:/sketcher/snapintersection.PNG</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="10">
+      <widget class="QToolButton" name="toolButton_snap_parallel">
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset resource="libicon/icons.qrc">
+         <normaloff>:/sketcher/snapparallel.PNG</normaloff>:/sketcher/snapparallel.PNG</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="13">
       <widget class="QToolButton" name="toolButton_zoom_min">
        <property name="text">
         <string>...</string>
@@ -147,7 +654,18 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="7">
+     <item row="3" column="2">
+      <widget class="QToolButton" name="toolButton_trim">
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset resource="libicon/icons.qrc">
+         <normaloff>:/sketcher/trimcurve.PNG</normaloff>:/sketcher/trimcurve.PNG</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="9">
       <widget class="QToolButton" name="toolButton_zoom_right">
        <property name="text">
         <string>...</string>
@@ -158,138 +676,315 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="8">
-      <widget class="QToolButton" name="toolButton_zoom_top">
+     <item row="2" column="8">
+      <widget class="QToolButton" name="toolButton_snap_tangent">
        <property name="text">
         <string>...</string>
        </property>
        <property name="icon">
         <iconset resource="libicon/icons.qrc">
-         <normaloff>:/view-top.svg</normaloff>:/view-top.svg</iconset>
+         <normaloff>:/sketcher/snaptangent.PNG</normaloff>:/sketcher/snaptangent.PNG</iconset>
        </property>
       </widget>
      </item>
-     <item row="0" column="1">
-      <widget class="QComboBox" name="comboBox">
-       <property name="minimumSize">
+     <item row="0" column="0">
+      <spacer name="horizontalSpacer_4">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
         <size>
-         <width>135</width>
-         <height>0</height>
+         <width>40</width>
+         <height>20</height>
         </size>
        </property>
-       <item>
-        <property name="text">
-         <string>Show perspective</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Show orthographic</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Show wireframe</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Show shaded</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Show triedron</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Hide triedron</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Show boundary</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Hide boundary</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Show cube</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Hide cube</string>
-        </property>
-       </item>
-      </widget>
+      </spacer>
      </item>
-    </layout>
-   </item>
-   <item row="2" column="1">
-    <layout class="QGridLayout" name="gridLayout_2">
-     <item row="2" column="4">
-      <widget class="QLabel" name="label_mouse_z">
-       <property name="font">
-        <font>
-         <weight>50</weight>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::Panel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Sunken</enum>
-       </property>
-       <property name="lineWidth">
-        <number>1</number>
-       </property>
-       <property name="midLineWidth">
-        <number>0</number>
-       </property>
+     <item row="4" column="2">
+      <widget class="QToolButton" name="toolButton_plane_front">
        <property name="text">
-        <string>Z</string>
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset resource="libicon/icons.qrc">
+         <normaloff>:/sketcher/plane_front.png</normaloff>:/sketcher/plane_front.png</iconset>
        </property>
       </widget>
      </item>
-     <item row="2" column="5">
-      <widget class="QLabel" name="label_val_mouse_z">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <weight>50</weight>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::Panel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Sunken</enum>
-       </property>
-       <property name="lineWidth">
-        <number>1</number>
-       </property>
-       <property name="midLineWidth">
-        <number>0</number>
-       </property>
+     <item row="2" column="9">
+      <widget class="QToolButton" name="toolButton_snap_nearest">
        <property name="text">
-        <string>0.000</string>
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset resource="libicon/icons.qrc">
+         <normaloff>:/sketcher/snapnearest.PNG</normaloff>:/sketcher/snapnearest.PNG</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="8">
+      <widget class="QToolButton" name="toolButton_zoom_left">
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset resource="libicon/icons.qrc">
+         <normaloff>:/view-left.svg</normaloff>:/view-left.svg</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="3">
+      <widget class="QToolButton" name="toolButton_erase">
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset resource="libicon/icons.qrc">
+         <normaloff>:/sketcher/erase.PNG</normaloff>:/sketcher/erase.PNG</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="12">
+      <widget class="QToolButton" name="toolButton_zoom_plus">
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset resource="libicon/icons.qrc">
+         <normaloff>:/zoom_plus.svg</normaloff>:/zoom_plus.svg</iconset>
+       </property>
+       <property name="autoRepeat">
+        <bool>true</bool>
+       </property>
+       <property name="autoRepeatDelay">
+        <number>50</number>
+       </property>
+       <property name="autoRepeatInterval">
+        <number>50</number>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="7">
+      <widget class="QToolButton" name="toolButton_zoom_front">
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset resource="libicon/icons.qrc">
+         <normaloff>:/view-front.svg</normaloff>:/view-front.svg</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="6">
+      <widget class="QToolButton" name="toolButton_zoom_bottom">
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset resource="libicon/icons.qrc">
+         <normaloff>:/view-bottom.svg</normaloff>:/view-bottom.svg</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="2">
+      <widget class="QToolButton" name="toolButton_open_filecenter">
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset resource="libicon/icons.qrc">
+         <normaloff>:/document-open.png</normaloff>:/document-open.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="12">
+      <widget class="QToolButton" name="toolButton_draw_bezier">
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset resource="libicon/icons.qrc">
+         <normaloff>:/sketcher/inputBezierCurve.PNG</normaloff>:/sketcher/inputBezierCurve.PNG</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="11">
+      <widget class="QToolButton" name="toolButton_draw_bspline">
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset resource="libicon/icons.qrc">
+         <normaloff>:/sketcher/inputBsplineCurve.PNG</normaloff>:/sketcher/inputBsplineCurve.PNG</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="10">
+      <widget class="QToolButton" name="toolButton_draw_3p_tan_circle">
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset resource="libicon/icons.qrc">
+         <normaloff>:/sketcher/inputCircle3tan.PNG</normaloff>:/sketcher/inputCircle3tan.PNG</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="9">
+      <widget class="QToolButton" name="toolButton_draw_2p_tan_circle">
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset resource="libicon/icons.qrc">
+         <normaloff>:/sketcher/inputCircleP2Tan.png</normaloff>:/sketcher/inputCircleP2Tan.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="8">
+      <widget class="QToolButton" name="toolButton_draw_3p_circle">
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset resource="libicon/icons.qrc">
+         <normaloff>:/sketcher/inputCircle3p.PNG</normaloff>:/sketcher/inputCircle3p.PNG</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="7">
+      <widget class="QToolButton" name="toolButton_draw_2p_circle">
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset resource="libicon/icons.qrc">
+         <normaloff>:/sketcher/inputCircle.png</normaloff>:/sketcher/inputCircle.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="6">
+      <widget class="QToolButton" name="toolButton_draw_3p_cp_arc">
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset resource="libicon/icons.qrc">
+         <normaloff>:/sketcher/inputArcCenter2p.PNG</normaloff>:/sketcher/inputArcCenter2p.PNG</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="5">
+      <widget class="QToolButton" name="toolButton_draw_3p_arc">
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset resource="libicon/icons.qrc">
+         <normaloff>:/sketcher/inputArc3p.PNG</normaloff>:/sketcher/inputArc3p.PNG</iconset>
        </property>
       </widget>
      </item>
      <item row="1" column="4">
+      <widget class="QToolButton" name="toolButton_draw_2p_line">
+       <property name="toolTip">
+        <string>Draw line.
+
+F3 Snap 
+F8 Ortho</string>
+       </property>
+       <property name="text">
+        <string>L</string>
+       </property>
+       <property name="icon">
+        <iconset resource="libicon/icons.qrc">
+         <normaloff>:/sketcher/inputLine.png</normaloff>:/sketcher/inputLine.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="3">
+      <widget class="QToolButton" name="toolButton_draw_point">
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset resource="libicon/icons.qrc">
+         <normaloff>:/sketcher/inputPoint.PNG</normaloff>:/sketcher/inputPoint.PNG</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="2">
+      <widget class="QToolButton" name="toolButton_draw_cancel">
+       <property name="toolTip">
+        <string>cancel
+
+</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset resource="libicon/icons.qrc">
+         <normaloff>:/sketcher/inputNone.png</normaloff>:/sketcher/inputNone.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="4">
+      <widget class="QToolButton" name="toolButton_sketch_color">
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset resource="libicon/icons.qrc">
+         <normaloff>:/sketcher/tool_color.png</normaloff>:/sketcher/tool_color.png</iconset>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="3" column="1">
+    <layout class="QGridLayout" name="gridLayout_3">
+     <item row="2" column="1">
+      <spacer name="horizontalSpacer_3">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>2000</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="2" column="2">
+      <widget class="QSlider" name="verticalSlider">
+       <property name="maximum">
+        <number>100</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <spacer name="verticalSpacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>2000</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item row="4" column="1">
+    <layout class="QGridLayout" name="gridLayout_2">
+     <item row="1" column="7">
       <widget class="QLabel" name="label_mouse_y">
        <property name="font">
         <font>
@@ -320,13 +1015,44 @@
        </property>
       </widget>
      </item>
-     <item row="1" column="5">
-      <widget class="QLabel" name="label_val_mouse_y">
+     <item row="2" column="8">
+      <widget class="QLabel" name="label_val_mouse_z">
        <property name="minimumSize">
         <size>
          <width>0</width>
          <height>0</height>
         </size>
+       </property>
+       <property name="font">
+        <font>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::Panel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Sunken</enum>
+       </property>
+       <property name="lineWidth">
+        <number>1</number>
+       </property>
+       <property name="midLineWidth">
+        <number>0</number>
+       </property>
+       <property name="text">
+        <string>0.000</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="7">
+      <widget class="QLabel" name="label_mouse_x">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
        </property>
        <property name="font">
         <font>
@@ -353,11 +1079,30 @@
         <number>0</number>
        </property>
        <property name="text">
-        <string>0.000</string>
+        <string>X</string>
        </property>
       </widget>
      </item>
-     <item row="0" column="5">
+     <item row="2" column="1">
+      <widget class="QToolButton" name="toolButton_snap">
+       <property name="toolTip">
+        <string>Snap</string>
+       </property>
+       <property name="text">
+        <string>F3</string>
+       </property>
+       <property name="checkable">
+        <bool>true</bool>
+       </property>
+       <property name="checked">
+        <bool>false</bool>
+       </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonTextBesideIcon</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="8">
       <widget class="QLabel" name="label_val_mouse_x">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -400,13 +1145,38 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="4">
-      <widget class="QLabel" name="label_mouse_x">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
+     <item row="2" column="7">
+      <widget class="QLabel" name="label_mouse_z">
+       <property name="font">
+        <font>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::Panel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Sunken</enum>
+       </property>
+       <property name="lineWidth">
+        <number>1</number>
+       </property>
+       <property name="midLineWidth">
+        <number>0</number>
+       </property>
+       <property name="text">
+        <string>Z</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="8">
+      <widget class="QLabel" name="label_val_mouse_y">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
        </property>
        <property name="font">
         <font>
@@ -433,12 +1203,28 @@
         <number>0</number>
        </property>
        <property name="text">
-        <string>X</string>
+        <string>0.000</string>
        </property>
       </widget>
      </item>
-     <item row="1" column="0">
-      <spacer name="horizontalSpacer_2">
+     <item row="2" column="2">
+      <widget class="QToolButton" name="toolButton_ortho">
+       <property name="toolTip">
+        <string>Ortho</string>
+       </property>
+       <property name="text">
+        <string>F8</string>
+       </property>
+       <property name="checkable">
+        <bool>true</bool>
+       </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonTextBesideIcon</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <spacer name="horizontalSpacer">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -450,42 +1236,15 @@
        </property>
       </spacer>
      </item>
-    </layout>
-   </item>
-   <item row="1" column="1">
-    <layout class="QGridLayout" name="gridLayout_3">
-     <item row="2" column="1">
-      <spacer name="horizontalSpacer_3">
+     <item row="2" column="3">
+      <spacer name="horizontalSpacer_2">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
-         <width>2000</width>
+         <width>40</width>
          <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item row="2" column="2">
-      <widget class="QSlider" name="verticalSlider">
-       <property name="maximum">
-        <number>100</number>
-       </property>
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0">
-      <spacer name="verticalSpacer">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>20</width>
-         <height>2000</height>
         </size>
        </property>
       </spacer>

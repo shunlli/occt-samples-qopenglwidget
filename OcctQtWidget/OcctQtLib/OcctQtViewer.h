@@ -32,6 +32,10 @@
 #include <AIS_ViewController.hxx>
 #include <V3d_View.hxx>
 #include <AIS_ViewCube.hxx>
+#include <AIS_Shape.hxx>
+#include <Poly.hxx>
+
+#include <libscetcher/Sketcher.hxx>
 
 //! OCCT 3D View.
 class OcctQtViewer : public QOpenGLWidget, public AIS_ViewController
@@ -65,22 +69,22 @@ public:
   //virtual QSize sizeHint()        const override { return QSize(720, 480); }
 
   //! Set the tranceparancy level of the shapevec.
-  void set_tranceparancy(double value);
+  void set_tranceparancy(opencascade::handle<AIS_Shape> shape, double value);
 
   //! Set the background color. Red,green,blue. 0-255.
   void set_backgroundcolor(double r, double g, double b);
 
   //! Enable the shape contours lines to be viewed.
-  void show_boundary();
-  void hide_boundary();
+  void show_boundary(Handle(AIS_Shape) shape);
+  void hide_boundary(Handle(AIS_Shape) shape);
 
   //! Show or hide the navigation cube.
   void show_cube();
   void hide_cube();
 
   //! Shape preview mode.
-  void show_as_wireframe();
-  void show_as_shaded();
+  void show_as_wireframe(Handle(AIS_Shape) shape);
+  void show_as_shaded(Handle(AIS_Shape) shape);
 
   //! Triedron axis origin.
   void show_triedron();
@@ -91,12 +95,40 @@ public:
   void set_perspective();
 
   //! A bucket containing all shapes.
-  std::vector<Handle(AIS_InteractiveObject)> aShapeVec;
+  std::vector<Handle(AIS_Shape)> aShapeVec;
 
+  //! A shape that is displayed during contruction of a primitive.
+  //! It displays the mouse startpos and updates current mousepos to next to press primitive point.
+  bool mode_construct_line=0;
+  unsigned int count=0;
+  Handle(AIS_Shape) AisConstructShape, AisPlane, AisSnapSphere;
+
+  //! 3d mousepos coordinates from occt diplay.
   gp_Pnt mousepos;
+
+  //! Show a shapevec or stepfile.
+  void show_shapevec(std::vector<Handle(AIS_Shape)> shapevec);
+
+  //! Show a single shape.
+  void show_shape(Handle(AIS_Shape) shape);
+
+  //! Redisplay a shape.
+  void remove_shape(Handle(AIS_Shape) shape);
+
+  void redraw();
+
+  bool mode_ortho=0;
+  bool mode_snap=0;
+  double snap_dist=2.0;
+  gp_Pnt snap_pos;
+  gp_Pnt p0,p1;
+
+  Sketcher *mySketcher;
 
 signals:
     void mouse_signal();
+    void F3(bool checked);
+    void F8(bool checked);
 
 protected: // OpenGL events
 
@@ -124,6 +156,7 @@ private:
   //! Handle view redraw.
   virtual void handleViewRedraw (const Handle(AIS_InteractiveContext)& theCtx,
                                  const Handle(V3d_View)& theView) override;
+
 private:
   Handle(V3d_Viewer)             myViewer;
   Handle(V3d_View)               myView;
@@ -133,6 +166,11 @@ private:
   GLint m_vaoHandle;
   QString myGlInfo;
   bool myIsCoreProfile;
+
+  //! Sketcher vars.
+  double aVx, aVy, aVz;
+  double aPx, aPy, aPz;
+
 
 };
 

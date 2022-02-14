@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>OcctQtWidget</class>
- <widget class="QWidget" name="OcctQtWidget">
+ <class>OcctQtFile</class>
+ <widget class="QWidget" name="OcctQtFile">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>610</width>
-    <height>491</height>
+    <width>695</width>
+    <height>367</height>
    </rect>
   </property>
   <property name="palette">
@@ -453,10 +453,85 @@
    </palette>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>File dialog</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout"/>
+  <layout class="QGridLayout" name="gridLayout_3">
+   <item row="3" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Loaded files</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <layout class="QGridLayout" name="gridLayout_controls">
+     <item row="1" column="3">
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="1" column="1">
+      <widget class="QToolButton" name="toolButton_close_document">
+       <property name="toolTip">
+        <string>Remove a selected file from the list.</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset resource="libicon/icons.qrc">
+         <normaloff>:/document-close.png</normaloff>:/document-close.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QToolButton" name="toolButton_open_document">
+       <property name="toolTip">
+        <string>Open filedialog and select a file to open</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset resource="libicon/icons.qrc">
+         <normaloff>:/document-open.png</normaloff>:/document-open.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="2">
+      <widget class="QToolButton" name="toolButton_save_document">
+       <property name="toolTip">
+        <string>Save this as dxf drawing.</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset resource="libicon/icons.qrc">
+         <normaloff>:/save_as.svg</normaloff>:/save_as.svg</iconset>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="4" column="0">
+    <widget class="QListWidget" name="listWidget"/>
+   </item>
+   <item row="1" column="0">
+    <layout class="QGridLayout" name="gridLayout_filedialog"/>
+   </item>
+  </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="libicon/icons.qrc"/>
+ </resources>
  <connections/>
 </ui>

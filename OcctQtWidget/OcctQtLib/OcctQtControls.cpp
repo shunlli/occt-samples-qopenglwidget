@@ -1,6 +1,9 @@
 #include "OcctQtControls.h"
 #include "ui_OcctQtControls.h"
 #include <iostream>
+#include <QMenu>
+
+
 
 //! Creating control pointers to be used in a upper class.
 OcctQtControls::OcctQtControls(QWidget *parent) :
@@ -8,8 +11,9 @@ OcctQtControls::OcctQtControls(QWidget *parent) :
     ui(new Ui::OcctQtControls)
 {
     ui->setupUi(this);
-
     setMouseTracking(true);
+    tlb_ortho=ui->toolButton_ortho;
+    tlb_snap=ui->toolButton_snap;
 }
 
 //! Destructor.
@@ -81,7 +85,152 @@ void OcctQtControls::on_verticalSlider_sliderMoved(int position)
     verticalSlider_sliderMoved(position);
 }
 
-void OcctQtControls::on_comboBox_currentIndexChanged(int index)
+void OcctQtControls::on_toolButton_settings_pressed()
 {
-    comboBox_currentIndexChanged(index);
+    toolButton_settings_pressed();
+}
+
+void OcctQtControls::on_toolButton_open_filecenter_pressed()
+{
+    toolButton_open_filecenter_pressed();
+}
+
+void OcctQtControls::on_toolButton_draw_2p_line_pressed()
+{
+    toolButton_draw_2p_line_pressed();
+}
+
+void OcctQtControls::on_toolButton_draw_3p_arc_pressed()
+{
+    toolButton_draw_3p_arc_pressed();
+}
+
+void OcctQtControls::on_toolButton_draw_2p_circle_pressed()
+{
+    toolButton_draw_2p_circle_pressed();
+}
+
+void OcctQtControls::on_toolButton_ortho_toggled(bool checked)
+{
+     F8(checked);
+}
+
+void OcctQtControls::on_toolButton_snap_toggled(bool checked)
+{
+    F3(checked);
+}
+
+void OcctQtControls::on_toolButton_draw_point_pressed()
+{
+    toolButton_draw_point_pressed();
+}
+
+void OcctQtControls::on_toolButton_draw_3p_circle_pressed()
+{
+    toolButton_draw_3p_circle_pressed();
+}
+
+void OcctQtControls::on_toolButton_draw_3p_cp_arc_pressed()
+{
+    toolButton_draw_3p_cp_arc_pressed();
+}
+
+void OcctQtControls::on_toolButton_snap_end_pressed()
+{
+    toolButton_snap_end_pressed();
+}
+
+void OcctQtControls::on_toolButton_snap_center_pressed()
+{
+    toolButton_snap_center_pressed();
+}
+
+void OcctQtControls::on_toolButton_snap_mid_pressed()
+{
+    toolButton_snap_mid_pressed();
+}
+
+void OcctQtControls::on_toolButton_snap_perpendicular_pressed()
+{
+    toolButton_snap_perpendicular_pressed();
+}
+
+void OcctQtControls::on_toolButton_snap_intersection_pressed()
+{
+    toolButton_snap_intersection_pressed();
+}
+
+void OcctQtControls::on_toolButton_snap_tangent_pressed()
+{
+    toolButton_snap_tangent_pressed();
+}
+
+void OcctQtControls::on_toolButton_snap_nearest_pressed()
+{
+    toolButton_snap_nearest_pressed();
+}
+
+void OcctQtControls::on_toolButton_snap_parallel_pressed()
+{
+    toolButton_snap_parallel_pressed();
+}
+
+void OcctQtControls::on_toolButton_snap_on_toggled(bool checked)
+{
+    toolButton_snap_on_toggled(checked);
+}
+
+void OcctQtControls::on_toolButton_draw_3p_tan_circle_pressed()
+{
+    toolButton_draw_3p_tan_circle_pressed();
+}
+
+void OcctQtControls::on_toolButton_draw_2p_tan_circle_pressed()
+{
+    toolButton_draw_2p_tan_circle_pressed();
+}
+
+void OcctQtControls::on_toolButton_draw_bspline_pressed()
+{
+    toolButton_draw_bspline_pressed();
+}
+
+void OcctQtControls::on_toolButton_draw_bezier_pressed()
+{
+    toolButton_draw_bezier_pressed();
+}
+
+void OcctQtControls::on_toolButton_trim_pressed()
+{
+    toolButton_trim_pressed();
+}
+
+void OcctQtControls::on_toolButton_erase_pressed()
+{
+    toolButton_erase_pressed();
+}
+
+void OcctQtControls::on_toolButton_plane_front_pressed()
+{
+    toolButton_plane_front_pressed();
+}
+
+void OcctQtControls::on_toolButton_plane_top_pressed()
+{
+    toolButton_plane_top_pressed();
+}
+
+void OcctQtControls::on_toolButton_plane_right_pressed()
+{
+    toolButton_plane_right_pressed();
+}
+
+void OcctQtControls::on_toolButton_draw_cancel_pressed()
+{
+     toolButton_draw_cancel_pressed();
+}
+
+void OcctQtControls::on_toolButton_sketch_color_pressed()
+{
+    toolButton_sketch_color_pressed();
 }

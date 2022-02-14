@@ -44,7 +44,22 @@
 #include <Message.hxx>
 #include <OpenGl_GraphicDriver.hxx>
 #include <OpenGl_FrameBuffer.hxx>
+#include "StdSelect_ViewerSelector3d.hxx"
+#include "BRepBuilderAPI_MakeEdge.hxx"
+#include "TopExp_Explorer.hxx"
+#include "TopExp.hxx"
+#include "BRepTools_ReShape.hxx"
+#include "BRepBuilderAPI_Transform.hxx"
+#include <TopoDS.hxx>
+#include <BRepPrimAPI_MakeSphere.hxx>
+#include <OpenGl_VertexBuffer.hxx>
+#include <BRepPrim_FaceBuilder.hxx>
+#include <TopoDS_Face.hxx>
+#include <TopoDS_Edge.hxx>
+#include <BRepBuilderAPI_MakeWire.hxx>
+#include <BRepLib_MakeFace.hxx>
 
+#include <libscetcher/Sketcher.hxx>
 namespace
 {
 //! Map Qt buttons bitmask to virtual keys.
@@ -145,12 +160,12 @@ Aspect_VKey qtKey2VKey (int theKey)
         //
     case Qt::Key_F1:        return Aspect_VKey_F1;
     case Qt::Key_F2:        return Aspect_VKey_F2;
-    case Qt::Key_F3:        return Aspect_VKey_F3;
+        //case Qt::Key_F3:        return Aspect_VKey_F3;
     case Qt::Key_F4:        return Aspect_VKey_F4;
     case Qt::Key_F5:        return Aspect_VKey_F5;
     case Qt::Key_F6:        return Aspect_VKey_F6;
     case Qt::Key_F7:        return Aspect_VKey_F7;
-    case Qt::Key_F8:        return Aspect_VKey_F8;
+        //case Qt::Key_F8:        return Aspect_VKey_F8;
     case Qt::Key_F9:        return Aspect_VKey_F9;
     case Qt::Key_F10:       return Aspect_VKey_F10;
     case Qt::Key_F11:       return Aspect_VKey_F11;
@@ -207,7 +222,7 @@ OcctQtViewer::OcctQtViewer (QWidget* theParent)
 
     //! create viewer
     myViewer = new V3d_Viewer (aDriver);
-    myViewer->SetDefaultBackgroundColor (Quantity_NOC_GRAY);
+    myViewer->SetDefaultBackgroundColor (Quantity_NOC_BLACK);
     myViewer->SetDefaultLights();
     myViewer->SetLightOn();
     //! myViewer->ActivateGrid (Aspect_GT_Rectangular, Aspect_GDM_Lines);
@@ -324,12 +339,10 @@ void OcctQtViewer::dumpGlInfo (bool theIsBasic)
     }
 
     Message::SendInfo (anInfo);
-    myGlInfo = QString::fromUtf8 (anInfo.ToCString());
+    //! myGlInfo = QString::fromUtf8 (anInfo.ToCString());
 }
 
 //! initializeGL
-#include <OpenGl_VertexBuffer.hxx>
-
 void OcctQtViewer::initializeGL()
 {
     const QRect aRect = rect();
@@ -338,9 +351,9 @@ void OcctQtViewer::initializeGL()
     Handle(OpenGl_Context) aGlCtx = new OpenGl_Context();
     if (!aGlCtx->Init (myIsCoreProfile))
     {
-        Message::SendFail() << "Error: OpenGl_Context is unable to wrap OpenGL context";
-        QMessageBox::critical (0, "Failure", "OpenGl_Context is unable to wrap OpenGL context");
-        QApplication::exit (1);
+        //! Message::SendFail() << "Error: OpenGl_Context is unable to wrap OpenGL context";
+        //! QMessageBox::critical (0, "Failure", "OpenGl_Context is unable to wrap OpenGL context");
+        //! QApplication::exit (1);
         return;
     }
 
@@ -372,15 +385,9 @@ void OcctQtViewer::initializeGL()
     }
 
     {
-        //! dummy shape for testing
-        TopoDS_Shape aTopoBox = BRepPrimAPI_MakeBox (100.0, 50.0, 90.0).Shape();
-        aShapeVec.push_back(new AIS_Shape (aTopoBox));
-        //! Set shape boundary line enable.
-        aShapeVec.back()->Attributes()->SetFaceBoundaryDraw(true);
-        aShapeVec.back()->Attributes()->SetFaceBoundaryAspect(new Prs3d_LineAspect(Quantity_NOC_BLACK, Aspect_TOL_SOLID, 1.));
-        aShapeVec.back()->Attributes()->SetIsoOnTriangulation(true);
-        aShapeVec.back()->Attributes()->SetDisplayMode(AIS_Shaded);
-        myContext->Display (aShapeVec.back(),Standard_False);
+        mySketcher = new Sketcher(myContext, nullptr);
+        mySketcher->SetWidth(1);
+        myView->FitAll();
     }
 }
 
@@ -408,6 +415,16 @@ void OcctQtViewer::keyPressEvent (QKeyEvent* theEvent)
         return;
     }
     }
+
+    if(theEvent->key()==Qt::Key::Key_F3){
+        mode_snap=!mode_snap;
+        F3(mode_snap);
+    }
+    if(theEvent->key()==Qt::Key::Key_F8){
+        mode_ortho=!mode_ortho;
+        F8(mode_ortho);
+    }
+
     QOpenGLWidget::keyPressEvent (theEvent);
 }
 
@@ -425,6 +442,11 @@ void OcctQtViewer::mousePressEvent (QMouseEvent* theEvent)
     {
         updateView();
     }
+
+    //! Sketcher.
+    myView->Convert(theEvent->pos().x(),theEvent->pos().y(), aVx, aVy, aVz);
+    myView->Proj(aPx, aPy, aPz);
+    mySketcher->OnMouseInputEvent(aVx, aVy, aVz, aPx, aPy, aPz);
 }
 
 //! mouseReleaseEvent
@@ -446,14 +468,6 @@ void OcctQtViewer::mouseReleaseEvent (QMouseEvent* theEvent)
 //! mouseMoveEvent
 void OcctQtViewer::mouseMoveEvent (QMouseEvent* theEvent)
 {
-    for(myContext->InitSelected(); myContext->MoreSelected(); myContext->NextSelected()){
-        if(myContext->MainSelector()->NbPicked()>0){
-            //! Send a signal containing the occt mapped mouseposition.
-            mousepos=(myContext->MainSelector()->PickedPoint(1).XYZ());
-            mouse_signal();
-        }
-    }
-
     QOpenGLWidget::mouseMoveEvent (theEvent);
     const Graphic3d_Vec2i aNewPos (theEvent->pos().x(), theEvent->pos().y());
     if (!myView.IsNull()
@@ -464,6 +478,13 @@ void OcctQtViewer::mouseMoveEvent (QMouseEvent* theEvent)
     {
         updateView();
     }
+
+    //! Sketcher.
+    myView->Convert(theEvent->pos().x(), theEvent->pos().y(), aVx, aVy, aVz);
+    myView->Proj(aPx, aPy, aPz);
+    mySketcher->OnMouseMoveEvent(aVx, aVy, aVz, aPx, aPy, aPz);
+    mousepos={aVx,aVy,aVz};
+    mouse_signal();
 }
 
 //! wheelEvent
@@ -540,11 +561,13 @@ void OcctQtViewer::handleViewRedraw (const Handle(AIS_InteractiveContext)& theCt
     }
 }
 
+void OcctQtViewer::redraw(){
+    myView->Redraw();
+}
+
 //! Set the tranceparancy between 0 & 1.
-void OcctQtViewer::set_tranceparancy(double value){
-    for(unsigned int i=0; i<aShapeVec.size(); i++){
-        aShapeVec.at(i)->SetTransparency(value);
-    }
+void OcctQtViewer::set_tranceparancy(Handle(AIS_Shape) shape,double value){
+    shape->SetTransparency(value);
 }
 
 //! Set background color.
@@ -556,90 +579,104 @@ void OcctQtViewer::set_backgroundcolor(double r, double g, double b){
 }
 
 //! Show the boundary line of the shapes.
-void OcctQtViewer::show_boundary(){
-    for(unsigned int i=0; i<aShapeVec.size(); i++){
-        aShapeVec[i]->Attributes()->SetFaceBoundaryDraw(true);
-        aShapeVec[i]->Attributes()->SetFaceBoundaryAspect(new Prs3d_LineAspect(Quantity_NOC_BLACK, Aspect_TOL_SOLID, 1.));
-        aShapeVec[i]->Attributes()->SetIsoOnTriangulation(true);
-        myContext->Redisplay(aShapeVec[i],Standard_False);
-    }
-    myView->Update();
+void OcctQtViewer::show_boundary(Handle(AIS_Shape) shape){
+
+    shape->Attributes()->SetFaceBoundaryDraw(true);
+    shape->Attributes()->SetFaceBoundaryAspect(new Prs3d_LineAspect(Quantity_NOC_BLACK, Aspect_TOL_SOLID, 1.));
+    shape->Attributes()->SetIsoOnTriangulation(true);
+    myContext->Redisplay(shape,Standard_False);
+    myView->Redraw();
 }
 
 //! Hide the boundary lines of the shapes.
-void OcctQtViewer::hide_boundary(){
-    for(unsigned int i=0; i<aShapeVec.size(); i++){
-        aShapeVec[i]->Attributes()->SetFaceBoundaryDraw(false);
-        //! aShapeVec[i]->Attributes()->SetFaceBoundaryAspect(new Prs3d_LineAspect(Quantity_NOC_BLACK, Aspect_TOL_SOLID, 1.));
-        aShapeVec[i]->Attributes()->SetIsoOnTriangulation(false);
-        myContext->Redisplay(aShapeVec[i],Standard_False);
-    }
-    myView->Update();
+void OcctQtViewer::hide_boundary(Handle(AIS_Shape) shape){
+
+    shape->Attributes()->SetFaceBoundaryDraw(false);
+    //! aShapeVec[i]->Attributes()->SetFaceBoundaryAspect(new Prs3d_LineAspect(Quantity_NOC_BLACK, Aspect_TOL_SOLID, 1.));
+    shape->Attributes()->SetIsoOnTriangulation(false);
+    myContext->Redisplay(shape,Standard_False);
+    myView->Redraw();
 }
 
 //! Hide the navigation cube.
 void OcctQtViewer::hide_cube(){
     myContext->Erase(myViewCube, false);
-    myView->Update();
+    myView->Redraw();
 }
 
 //! Hide the navigation cube.
 void OcctQtViewer::show_cube(){
     myContext->Display(myViewCube, false);
-    myView->Update();
+    myView->Redraw();
 }
 
 //! Show the trihedron
 void OcctQtViewer::show_triedron(){
     myView->TriedronDisplay(Aspect_TOTP_LEFT_LOWER, Quantity_NOC_GOLD, 0.08, V3d_ZBUFFER);
-    myView->Update();
+    myView->Redraw();
 }
 
 //! Hide the trihedron
 void OcctQtViewer::hide_triedron(){
     myView->TriedronErase();
-    myView->Update();
+    myView->Redraw();
 }
 
 //! Show as wireframe
-void OcctQtViewer::show_as_wireframe(){
-    for(unsigned int i=0; i<aShapeVec.size(); i++){
-        aShapeVec[i]->SetDisplayMode(AIS_WireFrame);
-        myContext->Remove(aShapeVec[i],Standard_False);
-        myContext->Display(aShapeVec[i],Standard_False);
-    }
+void OcctQtViewer::show_as_wireframe(Handle(AIS_Shape) shape){
+
+    shape->SetDisplayMode(AIS_WireFrame);
+    myContext->Remove(shape,Standard_False);
+    myContext->Display(shape,Standard_False);
     myView->Redraw();
-    myView->Update();
 }
 
 //! Show as shaded
-void OcctQtViewer::show_as_shaded(){
-    for(unsigned int i=0; i<aShapeVec.size(); i++){
-        aShapeVec[i]->SetDisplayMode(AIS_Shaded);
-        myContext->Remove(aShapeVec[i],Standard_False);
-        myContext->Display(aShapeVec[i],Standard_True);
-    }
+void OcctQtViewer::show_as_shaded(Handle(AIS_Shape) shape){
+
+    shape->SetDisplayMode(AIS_Shaded);
+    myContext->Remove(shape,Standard_False);
+    myContext->Display(shape,Standard_True);
     myView->Redraw();
-    myView->Update();
 }
 
 //! Display mode orthographic.
 void OcctQtViewer::set_orthographic(){
     myView->Camera()->SetProjectionType (Graphic3d_Camera::Projection_Orthographic);
     myView->Redraw();
-    myView->Update();
 }
 
 //! Display mode perspective.
 void OcctQtViewer::set_perspective(){
     myView->Camera()->SetProjectionType (Graphic3d_Camera::Projection_Perspective);
     myView->Redraw();
-    myView->Update();
 }
 
+void OcctQtViewer::show_shapevec(std::vector<Handle(AIS_Shape)> shapevec){
+    for(unsigned int i=0; i<shapevec.size(); i++){
+        myContext->Display(shapevec[i],Standard_False);
+    }
+    myView->FitAll();
+    myView->Redraw();
+}
 
+void OcctQtViewer::show_shape(Handle(AIS_Shape) shape){
+    myContext->Display(shape,Standard_False);
+    myView->Redraw();
+}
 
+void OcctQtViewer::remove_shape(Handle(AIS_Shape) shape){
 
+    //! Perfect way to avoid memory leaks.
+    //! https://dev.opencascade.org/content/removing-interactive-objects-interactive-context
+    myContext->SetSelected(shape,Standard_False);
+    myContext->EraseSelected(Standard_False);
+    //! sometimes the memory used for presentations and selections is not released.
+    //! For this problem you should write one more code as below.
+    myContext->Remove(shape, Standard_False);
+    //! memory can be released by calling the Nullify() method of the Handle(AIS_Shape) object.
+    shape.Nullify();
+}
 
 
 

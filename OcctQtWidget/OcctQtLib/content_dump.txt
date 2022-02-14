@@ -1,0 +1,95 @@
+/*
+for(myContext->InitSelected(); myContext->MoreSelected(); myContext->NextSelected()){
+    if(myContext->MainSelector()->NbPicked()>0){
+        //! Send a signal containing the occt mapped mouseposition.
+        mousepos=(myContext->MainSelector()->PickedPoint(1).XYZ());
+        mouse_signal();
+    }
+        const TopoDS_Shape& aSelShape = myContext->SelectedShape();
+        std::cout<<"selected shape type:"<<aSelShape.ShapeType()<<std::endl;
+
+
+        TopExp_Explorer explorer;
+
+        for(explorer.Init(aSelShape, TopAbs_EDGE); explorer.More(); explorer.Next()){
+
+            const TopoDS_Edge& edge = TopoDS::Edge(explorer.Current());
+
+            TopoDS_Vertex v1,v2;
+            TopExp::Vertices(edge,v1,v2);
+            gp_Pnt p1= BRep_Tool::Pnt(v1);
+            gp_Pnt p2= BRep_Tool::Pnt(v2);
+
+            std::cout<<"edge p1 x: "<<p1.X()<<" y:"<<p1.Y()<<" z:"<<p1.Z()<<std::endl;
+            std::cout<<"edge p2 x: "<<p2.X()<<" y:"<<p2.Y()<<" z:"<<p2.Z()<<std::endl;
+
+        }
+        for(explorer.Init(aSelShape, TopAbs_VERTEX); explorer.More(); explorer.Next()){
+            const TopoDS_Vertex& vertex = TopoDS::Vertex(explorer.Current());
+            gp_Pnt p1= BRep_Tool::Pnt(vertex);
+            std::cout<<"vertex p x: "<<p1.X()<<" y:"<<p1.Y()<<" z:"<<p1.Z()<<std::endl;
+        }
+
+}*/
+
+/*
+//! Dynamic highlight. (mouse hover highlight)
+if(myContext->HasDetected() && mode_snap){
+    //! Handle(AIS_InteractiveObject) ais_shape= myContext->DetectedInteractive(); //! Downcast
+    Handle(AIS_Shape) aSelShape= Handle(AIS_Shape)::DownCast(myContext->DetectedInteractive());
+
+    TopExp_Explorer explorer;
+    for(explorer.Init(aSelShape->Shape(), TopAbs_VERTEX); explorer.More(); explorer.Next()){
+        const TopoDS_Vertex& vertex = TopoDS::Vertex(explorer.Current());
+        gp_Pnt p1= BRep_Tool::Pnt(vertex);
+        //! std::cout<<"vertex p x: "<<p1.X()<<" y:"<<p1.Y()<<" z:"<<p1.Z()<<std::endl;
+
+        //! Check if mousepos is close to a vertex point.
+        if(mousepos.Distance(p1)<=snap_dist){
+            gp_Trsf myTrsf;
+            myTrsf.SetTranslation({0,0,0},p1);
+            AisSnapSphere->SetLocalTransformation(myTrsf);
+            myContext->Display(AisSnapSphere,AIS_Shaded,-1,Standard_True);
+
+            snap_pos=p1;
+        }
+    }
+} else {
+    //! Hide the snap sphere.
+    myContext->Remove(AisSnapSphere,Standard_True);
+    AisSnapSphere->ResetTransformation();
+}*/
+
+
+/*
+//! Create a plane to draw on.
+BRepBuilderAPI_MakeWire wire;
+TopoDS_Edge edge_0 = BRepBuilderAPI_MakeEdge({0,0,0},{0,100,0});
+TopoDS_Edge edge_1 = BRepBuilderAPI_MakeEdge({0,100,0},{100,100,0});
+TopoDS_Edge edge_2 = BRepBuilderAPI_MakeEdge({100,100,0},{100,0,0});
+TopoDS_Edge edge_3 = BRepBuilderAPI_MakeEdge({100,0,0},{0,0,0});
+wire.Add(edge_0);
+wire.Add(edge_1);
+wire.Add(edge_2);
+wire.Add(edge_3);
+BRepLib_MakeFace face(wire);
+AisPlane=(new AIS_Shape (face));
+myContext->Display (AisPlane,Standard_True);*/
+
+/*
+//! Create a snap sphere.
+TopoDS_Shape t_topo_sphere = BRepPrimAPI_MakeSphere({0,0,0},snap_dist).Shape();
+AisSnapSphere = new AIS_Shape(t_topo_sphere);
+AisSnapSphere->SetTransparency(0.5);*/
+
+
+/*
+//! dummy shape for testing
+TopoDS_Shape aTopoBox = BRepPrimAPI_MakeBox (1000.0, 1000.0, -1.0).Shape();
+AisPlane=(new AIS_Shape (aTopoBox));
+//! Set shape boundary line enable.
+AisPlane->Attributes()->SetFaceBoundaryDraw(true);
+AisPlane->Attributes()->SetFaceBoundaryAspect(new Prs3d_LineAspect(Quantity_NOC_BLACK, Aspect_TOL_SOLID, 1.));
+AisPlane->Attributes()->SetIsoOnTriangulation(true);
+AisPlane->Attributes()->SetDisplayMode(AIS_WireFrame);
+myContext->Display (AisPlane,Standard_False);*/
