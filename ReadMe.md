@@ -14,7 +14,7 @@ OCCT QOpenGLWidget sample. QWidget library
     Specs:
     - C++ Library.
     - QWidget.
-    - Some sketcher functions.
+    - Some sketcher functions, wich i find helpfull but incomplete related to autodesk input method's.
  
 OCCT QOpenGLWidget sample. Gui designer widget coding.
 ------------------
