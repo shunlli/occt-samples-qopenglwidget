@@ -12,9 +12,9 @@ OCCT QOpenGLWidget sample. QWidget library
 ![gui_preview](https://user-images.githubusercontent.com/44880102/151472889-d7c74424-c67c-4d27-86bb-47ac6700d3d9.jpg)
 
     Specs:
-    - Better then before.
     - C++ Library.
     - QWidget.
+    - Some sketcher functions.
  
 OCCT QOpenGLWidget sample. Gui designer widget coding.
 ------------------
