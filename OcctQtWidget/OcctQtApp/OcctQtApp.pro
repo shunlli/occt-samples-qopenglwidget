@@ -2,7 +2,7 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-CONFIG += c++11
+CONFIG += c++17
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -18,22 +18,42 @@ HEADERS += \
 FORMS += \
     mainwindow.ui
 
-INCLUDEPATH+=/home/user/testapp/OcctQtWidget/OcctQtLib
-
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-# Occt inludes
-LIBS += -L/usr/local/lib/
+# Occt widget
+LIBS += -L/opt/hal-core/src/hal/components/matrix/cpp_interface/libocct/occ_apps/OcctQtWidget/build-OcctQtLib-Desktop-Debug -lOcctQtLib
+INCLUDEPATH+=/opt/hal-core/src/hal/components/matrix/cpp_interface/libocct/occ_apps/OcctQtWidget/OcctQtLib
 
-INCLUDEPATH +=  /usr/local/include/opencascade/ \
-                /usr/include/ \
-                /usr/local/lib/
+# Dxfrw
+INCLUDEPATH +=/opt/hal-core/src/hal/components/matrix/cpp_interface/libocct/occ_apps/OcctQtWidget/OcctQtLib/libdxfrw
 
-# OCCT libraries to link
-LIBS += -lTKernel -lTKGeomBase -lTKGeomAlgo -lTKG2d -lTKV3d -lTKG3d  -lTKHLR -lTKService -lTKMath -lTKBRep -lTKTopAlgo -lTKOpenGl -lTKPrim -lTKShHealing -lTKMesh
+# Opencascade
+INCLUDEPATH += /opt/opencascade/oce-upstream-V7_5_0beta/inc \
+               /opt/opencascade/oce-upstream-V7_5_0beta/src
+LIBS+= -L/opt/opencascade/oce-upstream-V7_5_0beta/lin/gcc/lib \
+       -L/opt/opencascade/oce-upstream-V7_5_0beta/lin/gcc/libd
 
+LIBS += -lTKGeomAlgo -lTKMesh -lTKHLR -lTKBO -lTKShHealing
+LIBS += -lTKPrim
+LIBS += -lTKernel -lTKMath -lTKTopAlgo -lTKService
+LIBS += -lTKG2d -lTKG3d -lTKV3d -lTKOpenGl
+LIBS += -lTKBRep -lTKXSBase -lTKGeomBase
+LIBS += -lTKXSDRAW
+LIBS += -lTKLCAF -lTKXCAF -lTKCAF -lTKVCAF
+LIBS += -lTKCDF -lTKBin -lTKBinL -lTKBinXCAF -lTKXml -lTKXmlL -lTKXmlXCAF
+# -- IGES support
+LIBS += -lTKIGES
+# -- STEP support
+LIBS += -lTKSTEP -lTKXDESTEP -lTKXDEIGES -lTKSTEPAttr -lTKSTEPBase -lTKSTEP209
+# -- STL support
+LIBS += -lTKSTL
+# -- OBJ/glTF support
+LIBS += -lTKRWMesh -lTKMeshVS
+# -- VRML support
+LIBS += -lTKVRML
+# -- ViewerTest
+LIBS += -lTKViewerTest
 
-LIBS+= -L/home/user/testapp/OcctQtWidget/build-OcctQtLib-Desktop-Debug -lOcctQtLib

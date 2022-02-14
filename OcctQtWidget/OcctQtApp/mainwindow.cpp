@@ -7,9 +7,12 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    OcctQtWidget *occt = new OcctQtWidget(this);
     const QColor color=ui->centralwidget->palette().color(QPalette::ColorRole::Window);
     occt->set_backgroundcolor(color);
+    occt->setPalette(ui->centralwidget->palette());
     ui->gridLayout->addWidget(occt);
+
 }
 
 MainWindow::~MainWindow()

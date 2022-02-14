@@ -18,6 +18,6 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    OcctQtWidget *occt = new OcctQtWidget(this);
+
 };
 #endif // MAINWINDOW_H
