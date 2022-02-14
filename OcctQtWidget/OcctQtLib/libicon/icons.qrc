@@ -14,5 +14,42 @@
         <file>view-back.svg</file>
         <file>opinion-no.png</file>
         <file>opinion-okay.png</file>
+        <file>settings.png</file>
+        <file>arrow-up.png</file>
+        <file>document-open.png</file>
+        <file>document-close.png</file>
+        <file>save_as.svg</file>
+        <file>line.svg</file>
+        <file>ellipse.svg</file>
+        <file>circle.svg</file>
+        <file>sketcher/inputArc.png</file>
+        <file>sketcher/inputArc3p.PNG</file>
+        <file>sketcher/inputArcCenter2p.PNG</file>
+        <file>sketcher/inputBezierCurve.PNG</file>
+        <file>sketcher/inputBsplineCurve.PNG</file>
+        <file>sketcher/inputCircle.png</file>
+        <file>sketcher/inputCircle2.PNG</file>
+        <file>sketcher/inputCircle2PTan.PNG</file>
+        <file>sketcher/inputCircle3p.PNG</file>
+        <file>sketcher/inputCircle3tan.PNG</file>
+        <file>sketcher/inputCircleP2Tan.png</file>
+        <file>sketcher/inputLine.png</file>
+        <file>sketcher/inputPoint.PNG</file>
+        <file>sketcher/snapcenter.PNG</file>
+        <file>sketcher/snapend.PNG</file>
+        <file>sketcher/snapintersection.PNG</file>
+        <file>sketcher/snapmiddle.PNG</file>
+        <file>sketcher/snapnearest.PNG</file>
+        <file>sketcher/snapnon.PNG</file>
+        <file>sketcher/snapparallel.PNG</file>
+        <file>sketcher/snapperpendicular.PNG</file>
+        <file>sketcher/snaptangent.PNG</file>
+        <file>sketcher/erase.PNG</file>
+        <file>sketcher/trimcurve.PNG</file>
+        <file>sketcher/tool_color.png</file>
+        <file>sketcher/plane_top.png</file>
+        <file>sketcher/plane_right.png</file>
+        <file>sketcher/plane_front.png</file>
+        <file>sketcher/inputNone.png</file>
     </qresource>
 </RCC>
