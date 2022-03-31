@@ -14,7 +14,7 @@ public:
     bool Intersect(gp_Pnt &pa, gp_Pnt &pb){
 
         gp_Pnt p13,p43,p21;
-        const double EPS=0.00001;
+        const double EPS=0.0001;
         double d1343,d4321,d1321,d4343,d2121;
         double numer,denom;
         bool debug=0;
@@ -72,7 +72,7 @@ public:
         }
 
         //! Result.
-        if(l3==l1+l2 && l6==l4+l5){
+        if(l3>(l1+l2)-EPS && l3<(l1+l2)+EPS && l6>(l4+l5)-EPS && l6<(l4+l5)+EPS){
             if(debug){
                 std::cout<<"pa.x:"<<pa.X()<<" pa.y:"<<pa.Y()<<" pa.z:"<<pa.Z()<<std::endl;
                 std::cout<<"pb.x:"<<pb.X()<<" pb.y:"<<pb.Y()<<" pb.z:"<<pb.Z()<<std::endl;

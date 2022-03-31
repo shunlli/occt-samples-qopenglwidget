@@ -58,18 +58,18 @@ public:
         if (D < 0 || t1 > 1 || t2 >1)
         {
             std::cout<<"nothing..?"<<std::endl;
-            return 0;
+            return false;
         }
         else if (D == 0)
         {
               pvec.push_back(solution1);
-              return 1;
+              return true;
         }
         else
         {
             pvec.push_back(solution1);
             pvec.push_back(solution2);
-            return 1;
+            return true;
         }
     };
 };

@@ -26,9 +26,6 @@ public:
         Handle(AIS_Shape) myShape=new AIS_Shape(aEdge);
         return myShape;
     }
-
-
-
 };
 
 #endif // ARCSHAPE_H

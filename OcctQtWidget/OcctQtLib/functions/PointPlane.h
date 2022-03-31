@@ -32,7 +32,7 @@ public:
 
         //! checking if the 4th point satisfies
         //! the above equation
-        if(a * pi.X() + b * pi.Y() + c * pi.Z() + d ==0){
+        if(a * pi.X() + b * pi.Y() + c * pi.Z() + d == 0){
             std::cout<<"Coplanar (on plane)"<<std::endl;
             return true;
         } else {
