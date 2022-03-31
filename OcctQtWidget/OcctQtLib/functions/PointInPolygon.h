@@ -77,7 +77,7 @@ public:
     }
 
     //! For a box or other shape, pass points.
-    void CustomShape(std::vector<gp_Pnt> PointVec, bool &InPolygon){
+    void CustomShape(std::vector<gp_Pnt> PointVec, int &InPolygon){
         InPolygon=PIP(PointVec,P);
     }
 
