@@ -2,6 +2,9 @@ These sample's demonstrates how to use Open CASCADE Technology (OCCT) 3D Viewer 
 
 window created using Qt5 on Windows and Linux platforms.
 
+Opencascade libary download : https://github.com/grotius-cnc/occt-samples-qopenglwidget/releases/download/1.1/opencascade.tar.gz
+Unpack it in ~/opt/
+
 OpenGL-based OCCT viewer is embedded into Qt5 Widgets application via `QOpenGLWidget` widget.
 
 
