@@ -5,7 +5,7 @@
 #include <QGridLayout>
 #include <QTimer>
 #include <OcctQtViewer.h>
-#include <OcctQtControls.h>
+#include <OcctQtControl.h>
 #include <Tranceparancy.h>
 
 QT_BEGIN_NAMESPACE
@@ -23,7 +23,7 @@ public:
     void mainloop();
 
     OcctQtViewer *occt_viewer=new OcctQtViewer();
-    OcctQtControls *occt_controls=new OcctQtControls();
+    OcctQtControl *occt_controls=new OcctQtControl();
     Tranceparancy *transparancy= new Tranceparancy();
 
 private slots:

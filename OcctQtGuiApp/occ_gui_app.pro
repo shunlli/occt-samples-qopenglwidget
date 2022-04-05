@@ -9,33 +9,34 @@ TARGET=occ_gui_app_mainwindow
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    OcctQtControls.cpp \
+    OcctQtControl.cpp \
     OcctQtViewer.cpp \
     Tranceparancy.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
-    OcctQtControls.h \
+    OcctQtControl.h \
     OcctQtViewer.h \
     Tranceparancy.h \
-    mainwindow.h \
-    ui_OcctQtControls.h
+    mainwindow.h
 
 FORMS += \
-    OcctQtControls.ui \
+    OcctQtControl.ui \
     Tranceparancy.ui \
     mainwindow.ui
 
-# Occt inludes
-LIBS += -L/usr/local/lib/
+# Opencascade
+INCLUDEPATH += /opt/opencascade/oce-upstream-V7_5_0beta/inc \
+               /opt/opencascade/oce-upstream-V7_5_0beta/src
+LIBS+= -L/opt/opencascade/oce-upstream-V7_5_0beta/lin/gcc/lib \
+       -L/opt/opencascade/oce-upstream-V7_5_0beta/lin/gcc/libd
 
-INCLUDEPATH +=  /usr/local/include/opencascade/ \
-                /usr/include/ \
+INCLUDEPATH +=  /usr/include/ \
                 /usr/local/lib/
 
 # OCCT libraries to link
-LIBS += -lTKernel -lTKGeomBase -lTKGeomAlgo -lTKG2d -lTKV3d -lTKG3d  -lTKHLR -lTKService -lTKMath -lTKBRep -lTKTopAlgo -lTKOpenGl -lTKPrim -lTKShHealing -lTKMesh
+LIBS +=  -lTKernel -lTKGeomBase -lTKGeomAlgo -lTKG2d -lTKV3d -lTKG3d  -lTKHLR -lTKService -lTKMath -lTKBRep -lTKTopAlgo -lTKOpenGl -lTKPrim -lTKShHealing -lTKMesh
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
