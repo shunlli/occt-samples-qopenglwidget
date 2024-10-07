@@ -228,7 +228,7 @@ void MainWindow::on_toolButton_intersect_pressed()
             //! Check if intersection is on the arc-plane.
             bool on_plane=PointPlane<double>(p0,p1,p2,pvec.at(i)).IsOnPlane();
             if(on_plane){
-                myShape->SetColor(Quantity_NOC_BLUE);
+                myShape->SetColor(Quantity_NOC_BLUE2);
             } else {
                 myShape->SetColor(Quantity_NOC_RED);
             }

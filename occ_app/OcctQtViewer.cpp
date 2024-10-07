@@ -337,7 +337,8 @@ void OcctQtViewer::initializeGL()
     if (!aWindow.IsNull())
     {
         aWindow->SetSize (aViewSize.x(), aViewSize.y());
-        myView->SetWindow (aWindow, (Aspect_RenderingContext) glXGetCurrentContext());
+        // myView->SetWindow (aWindow, (Aspect_RenderingContext) glXGetCurrentContext());
+        myView->SetWindow (aWindow, (Aspect_RenderingContext) wglGetCurrentContext());
 
         dumpGlInfo (true);
     }
@@ -354,7 +355,8 @@ void OcctQtViewer::initializeGL()
 #endif
         aWindow->SetNativeHandle (aNativeWin);
         aWindow->SetSize (aViewSize.x(), aViewSize.y());
-        myView->SetWindow (aWindow, (Aspect_RenderingContext) glXGetCurrentContext());
+        // myView->SetWindow (aWindow, (Aspect_RenderingContext) glXGetCurrentContext());
+        myView->SetWindow (aWindow, (Aspect_RenderingContext) wglGetCurrentContext());
         dumpGlInfo (true);
 
         myContext->Display (myViewCube, 0, 0, false);

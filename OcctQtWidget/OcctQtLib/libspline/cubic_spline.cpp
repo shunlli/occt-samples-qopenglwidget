@@ -59,13 +59,18 @@ bool CubicSpline::ComputeSpline()
 
     int n = p.size()-1;
 
-    Vector3d a[p.size()];
+    // Vector3d a[p.size()];
+    std::vector<Vector3d> a(p.size());
+
     for (int i = 1; i <= n-1; i++)
         a[i] = 3*((p[i+1] - 2*p[i] + p[i-1]));
 
-    float l[p.size()];
-    float mu[p.size()];
-    Vector3d z[p.size()];
+    // float l[p.size()];
+    // float mu[p.size()];
+    // Vector3d z[p.size()];
+    std::vector<float> l(p.size());
+    std::vector<float> mu(p.size());
+    std::vector<Vector3d> z(p.size());
 
     l[0] = l[n] = 1;
     mu[0] = 0;

@@ -1,7 +1,7 @@
 QT       += core gui
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-CONFIG += c++17
+CONFIG += c++11
 TARGET=occ_gui_app_mainwindow
 
 # You can make your code fail to compile if it uses deprecated APIs.
@@ -33,6 +33,20 @@ FORMS += \
     Tranceparancy.ui \
     mainwindow.ui
 
+win32 {
+INCLUDEPATH +=D:\dev\occt-samples-qopenglwidget\OcctQtWidget\OcctQtLib\libdxfrw \
+    D:\dev\occt-samples-qopenglwidget\OcctQtWidget\OcctQtLib\libeigen \
+
+INCLUDEPATH += D:\code\FITK\Tools\Win64\OCC\include
+
+LIBS+= -LD:\code\FITK\Tools\Win64\OCC\lib \
+       -LD:\code\FITK\Tools\Win64\OCC\libd
+
+LIBS += -lTKOffset -lTKQADraw -lopengl32
+
+}
+
+unix {
 # Opencascade
 INCLUDEPATH += /opt/opencascade/oce-upstream-V7_5_0beta/inc \
                /opt/opencascade/oce-upstream-V7_5_0beta/src
@@ -41,6 +55,7 @@ LIBS+= -L/opt/opencascade/oce-upstream-V7_5_0beta/lin/gcc/lib \
 
 INCLUDEPATH +=  /usr/include/ \
                 /usr/local/lib/
+}
 
 # OCCT libraries to link
 LIBS +=  -lTKernel -lTKGeomBase -lTKGeomAlgo -lTKG2d -lTKV3d -lTKG3d  -lTKHLR -lTKService -lTKMath -lTKBRep -lTKTopAlgo -lTKOpenGl -lTKPrim -lTKShHealing -lTKMesh

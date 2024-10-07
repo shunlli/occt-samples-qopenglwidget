@@ -207,7 +207,7 @@ std::vector<Handle(AIS_Shape)> OcctQtFunctions::load_ngcfile(QString filename){
 
         if(i>0 && gc.blockvec.at(i).G==0){
             Ais_ShapeVec.push_back(draw_primitives().draw_3d_line(p1,p2));
-            Ais_ShapeVec.back()=draw_primitives().colorize(Ais_ShapeVec.back(),Quantity_NOC_BLUE,0);
+            Ais_ShapeVec.back()=draw_primitives().colorize(Ais_ShapeVec.back(),Quantity_NOC_BLUE2,0);
         }
         if(i>0 && gc.blockvec.at(i).G==1){
             Ais_ShapeVec.push_back(draw_primitives().draw_3d_line(p1,p2));
@@ -231,7 +231,8 @@ std::vector<Handle(AIS_Shape)> OcctQtFunctions::load_ngcfile(QString filename){
 }
 
 std::vector<Handle(AIS_Shape)> OcctQtFunctions::load_stlfile(QString filename){
-
+    std::vector<Handle(AIS_Shape)> v;
+    return v;
 }
 
 

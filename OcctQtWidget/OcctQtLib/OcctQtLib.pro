@@ -3,7 +3,7 @@ QT += widgets gui
 TEMPLATE = lib
 DEFINES += OCCTQT_LIBRARY
 
-CONFIG += c++17
+CONFIG += c++11
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -178,14 +178,16 @@ FORMS += \
 RESOURCES += \
     libicon/icons.qrc
 
-# Dxfrw
-INCLUDEPATH +=/opt/hal-core/src/hal/components/matrix/cpp_interface/libocct/occ_apps/OcctQtWidget/OcctQtLib/libdxfrw
 
-# Opencascade
-INCLUDEPATH += /opt/opencascade/oce-upstream-V7_5_0beta/inc \
-               /opt/opencascade/oce-upstream-V7_5_0beta/src
-LIBS+= -L/opt/opencascade/oce-upstream-V7_5_0beta/lin/gcc/lib \
-       -L/opt/opencascade/oce-upstream-V7_5_0beta/lin/gcc/libd
+INCLUDEPATH +=D:\dev\occt-samples-qopenglwidget\OcctQtWidget\OcctQtLib\libdxfrw \
+    D:\dev\occt-samples-qopenglwidget\OcctQtWidget\OcctQtLib\libeigen
+
+INCLUDEPATH += D:\code\FITK\Tools\Win64\OCC\include 
+
+LIBS+= -LD:\code\FITK\Tools\Win64\OCC\libd
+
+LIBS += -lTKOffset -lTKQADraw -lopengl32
+
 
 LIBS += -lTKGeomAlgo -lTKMesh -lTKHLR -lTKBO -lTKShHealing
 LIBS += -lTKPrim

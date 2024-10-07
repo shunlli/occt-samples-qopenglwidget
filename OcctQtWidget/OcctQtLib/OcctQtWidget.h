@@ -19,7 +19,13 @@ namespace Ui {
 class OcctQtWidget;
 }
 
-class OcctQtWidget : public QWidget
+#if defined(OCCTQT_LIBRARY)
+#  define OCCTQT_EXPORT Q_DECL_EXPORT
+#else
+#  define OCCTQT_EXPORT Q_DECL_IMPORT
+#endif
+
+class OCCTQT_EXPORT OcctQtWidget : public QWidget
 {
     Q_OBJECT
 

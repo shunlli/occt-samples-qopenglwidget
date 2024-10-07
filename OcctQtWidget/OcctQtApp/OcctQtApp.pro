@@ -2,7 +2,7 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-CONFIG += c++17
+CONFIG += c++11
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -23,6 +23,22 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
+
+win32 {
+INCLUDEPATH +=D:\dev\occt-samples-qopenglwidget\OcctQtWidget\OcctQtLib\libdxfrw \
+    D:\dev\occt-samples-qopenglwidget\OcctQtWidget\OcctQtLib\libeigen \
+    D:\dev\occt-samples-qopenglwidget\OcctQtWidget\OcctQtLib \
+
+INCLUDEPATH += D:\code\FITK\Tools\Win64\OCC\include
+
+LIBS+= -LD:\code\FITK\Tools\Win64\OCC\libd \
+       -LD:\dev\occt-samples-qopenglwidget\OcctQtWidget\OcctQtLib\debug
+
+LIBS += -lTKOffset -lTKQADraw -lopengl32 -lOcctQtLib
+
+}
+
+unix {
 # Occt widget
 LIBS += -L/opt/hal-core/src/hal/components/matrix/cpp_interface/libocct/occ_apps/OcctQtWidget/build-OcctQtLib-Desktop-Debug -lOcctQtLib
 INCLUDEPATH+=/opt/hal-core/src/hal/components/matrix/cpp_interface/libocct/occ_apps/OcctQtWidget/OcctQtLib
@@ -35,6 +51,7 @@ INCLUDEPATH += /opt/opencascade/oce-upstream-V7_5_0beta/inc \
                /opt/opencascade/oce-upstream-V7_5_0beta/src
 LIBS+= -L/opt/opencascade/oce-upstream-V7_5_0beta/lin/gcc/lib \
        -L/opt/opencascade/oce-upstream-V7_5_0beta/lin/gcc/libd
+}
 
 LIBS += -lTKGeomAlgo -lTKMesh -lTKHLR -lTKBO -lTKShHealing
 LIBS += -lTKPrim

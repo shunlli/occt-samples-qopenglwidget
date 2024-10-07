@@ -3,7 +3,7 @@
 #include <iomanip>
 #include <algorithm>
 #include <cstring>
-#include <iconv.h>
+//#include <iconv.h>
 #include "../drw_base.h"
 #include "drw_cptables.h"
 #include "drw_cptable932.h"
@@ -480,11 +480,11 @@ std::string DRW_ExtConverter::convertByiconv(const char *in_encode,
 	char *out_ptr = out_buf;
     strncpy(in_buf, s->c_str(), BUF_SIZE);
 
-    iconv_t ic;
-    ic = iconv_open(out_encode, in_encode);
-    size_t il = BUF_SIZE-1, ol = BUF_SIZE-1;
-    iconv(ic , &in_ptr, &il, &out_ptr, &ol);
-    iconv_close(ic);
+    // iconv_t ic;
+    // ic = iconv_open(out_encode, in_encode);
+    // size_t il = BUF_SIZE-1, ol = BUF_SIZE-1;
+    // iconv(ic , &in_ptr, &il, &out_ptr, &ol);
+    // iconv_close(ic);
 
     return std::string(out_buf);
 }

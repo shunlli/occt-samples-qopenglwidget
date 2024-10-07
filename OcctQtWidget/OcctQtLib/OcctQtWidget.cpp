@@ -16,6 +16,7 @@
 #include <Geom_Line.hxx>
 #include <Geom_Curve.hxx>
 #include <BRepAdaptor_Curve.hxx>
+#include <Quantity_TypeOfColor.hxx>
 
 //! Creator         : Skynet Cyberdyne.
 //! Date            : 01-2021.
@@ -174,7 +175,7 @@ void OcctQtWidget::on_toolButton_sketch_color_pressed(){
     double a=col.alpha()/255;
 
     Quantity_Color c;
-    c.SetValues(r,g,b,Quantity_TypeOfColor::Quantity_TOC_sRGB);
+    c.SetValues(r,g,b,Quantity_TypeOfColor::Quantity_TOC_RGB);
     //! Converse rgb to name.
     Quantity_NameOfColor name=c.Name();
     occt_viewer->mySketcher->SetColor(name);

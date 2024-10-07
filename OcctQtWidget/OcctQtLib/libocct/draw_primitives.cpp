@@ -120,7 +120,7 @@ Handle(AIS_Shape) draw_primitives::draw_3d_origin(gp_Pnt origin, double lineleng
 
     edge= BRepBuilderAPI_MakeEdge(origin,{x,y,z+linelenght});
     Handle(AIS_Shape) aisbody_tcp_zaxis = new AIS_Shape(edge);
-    aisbody_tcp_zaxis->SetColor(Quantity_NOC_BLUE);
+    aisbody_tcp_zaxis->SetColor(Quantity_NOC_BLUE2);
 
     aisbody_tcp_sphere->AddChild(aisbody_tcp_xaxis);
     aisbody_tcp_sphere->AddChild(aisbody_tcp_yaxis);
@@ -320,7 +320,7 @@ Handle(AIS_Shape) draw_primitives::draw_2d_text(std::string str, int textheight,
 Handle(AIS_Shape) draw_primitives::draw_3d_point_origin_cone(gp_Pnt point, gp_Pnt euler){
 
     Handle(AIS_Shape) Ais_shape=draw_3d_point(point);
-    Ais_shape=colorize(Ais_shape,Quantity_NOC_BLUE,0);
+    Ais_shape=colorize(Ais_shape,Quantity_NOC_BLUE2,0);
 
     // Draw the origin
     Handle(AIS_Shape) Ais_child=draw_3d_origin({0,0,0},25);
@@ -357,7 +357,7 @@ Handle(AIS_Shape) draw_primitives::draw_3d_line_origin_cone_text(gp_Pnt point1, 
 
     // Draw the line
     Handle(AIS_Shape) Ais_shape=draw_3d_line(point1,point2);
-    Ais_shape=draw_primitives().colorize(Ais_shape,Quantity_NOC_BLUE,0);
+    Ais_shape=draw_primitives().colorize(Ais_shape,Quantity_NOC_BLUE2,0);
 
     // Draw the first origin
     Handle(AIS_Shape) Ais_child=draw_primitives().draw_3d_origin({0,0,0},25);
@@ -408,7 +408,7 @@ Handle(AIS_Shape) draw_primitives::draw_3d_wire_origin_cone_text(std::vector<gp_
         wire.Add(edge);
     }
     Handle(AIS_Shape) Ais_shape=new AIS_Shape(wire);
-    Ais_shape=colorize(Ais_shape,Quantity_NOC_BLUE,0);
+    Ais_shape=colorize(Ais_shape,Quantity_NOC_BLUE2,0);
 
     for(unsigned int i=0; i<points.size(); i++){
         // Draw the origin
@@ -430,7 +430,7 @@ Handle(AIS_Shape) draw_primitives::draw_3d_wire_origin_cone_text(std::vector<gp_
         } else if(i==points.size()-1){
             Ais_child=colorize(Ais_child,Quantity_NOC_BLACK,0.5);
         } else {
-            Ais_child=colorize(Ais_child,Quantity_NOC_BLUE,0.5);
+            Ais_child=colorize(Ais_child,Quantity_NOC_BLUE2,0.5);
         }
 
         Ais_shape->AddChild(Ais_child);
@@ -451,7 +451,7 @@ Handle(AIS_Shape) draw_primitives::draw_3d_wire_origin_cone_text(std::vector<gp_
 Handle(AIS_Shape) draw_primitives::draw_3d_arc_origin_cone_text(std::vector<gp_Pnt> points, std::vector<gp_Pnt> euler, std::string text, int textheight){
 
     Handle(AIS_Shape) Ais_shape=draw_3p_3d_arc(points.at(0),points.at(1),points.at(2));
-    Ais_shape=colorize(Ais_shape,Quantity_NOC_BLUE,0);
+    Ais_shape=colorize(Ais_shape,Quantity_NOC_BLUE2,0);
 
     for(unsigned int i=0; i<points.size(); i++){
         // Draw the origin
@@ -473,7 +473,7 @@ Handle(AIS_Shape) draw_primitives::draw_3d_arc_origin_cone_text(std::vector<gp_P
         } else if(i==points.size()-1){
             Ais_child=colorize(Ais_child,Quantity_NOC_BLACK,0.5);
         } else {
-            Ais_child=colorize(Ais_child,Quantity_NOC_BLUE,0.5);
+            Ais_child=colorize(Ais_child,Quantity_NOC_BLUE2,0.5);
         }
 
         Ais_shape->AddChild(Ais_child);
@@ -498,7 +498,7 @@ Handle(AIS_Shape) draw_primitives::draw_3d_arc_origin_cone_text(std::vector<gp_P
 Handle(AIS_Shape) draw_primitives::draw_3d_circle_origin_cone_text(std::vector<gp_Pnt> points, std::vector<gp_Pnt> euler, std::string text, int textheight){
 
     Handle(AIS_Shape) Ais_shape=draw_3p_3d_circle(points.at(0),points.at(1),points.at(2));
-    Ais_shape=colorize(Ais_shape,Quantity_NOC_BLUE,0);
+    Ais_shape=colorize(Ais_shape,Quantity_NOC_BLUE2,0);
 
     for(unsigned int i=0; i<points.size(); i++){
         // Draw the origin
@@ -520,7 +520,7 @@ Handle(AIS_Shape) draw_primitives::draw_3d_circle_origin_cone_text(std::vector<g
         } else if(i==points.size()-1){
             Ais_child=colorize(Ais_child,Quantity_NOC_BLACK,0.5);
         } else {
-            Ais_child=colorize(Ais_child,Quantity_NOC_BLUE,0.5);
+            Ais_child=colorize(Ais_child,Quantity_NOC_BLUE2,0.5);
         }
 
         Ais_shape->AddChild(Ais_child);
@@ -537,7 +537,7 @@ Handle(AIS_Shape) draw_primitives::draw_3d_circle_origin_cone_text(std::vector<g
 Handle(AIS_Shape) draw_primitives::draw_3d_spline_origin_cone_text(std::vector<gp_Pnt> points, std::vector<gp_Pnt> euler, int divisions, std::string text, int textheight){
 
     Handle(AIS_Shape) Ais_shape=draw_3d_spline(points, divisions);
-    Ais_shape=colorize(Ais_shape,Quantity_NOC_BLUE,0);
+    Ais_shape=colorize(Ais_shape,Quantity_NOC_BLUE2,0);
 
     for(unsigned int i=0; i<points.size(); i++){
         // Draw the origin
@@ -559,7 +559,7 @@ Handle(AIS_Shape) draw_primitives::draw_3d_spline_origin_cone_text(std::vector<g
         } else if(i==points.size()-1){
             Ais_child=colorize(Ais_child,Quantity_NOC_BLACK,0.5);
         } else {
-            Ais_child=colorize(Ais_child,Quantity_NOC_BLUE,0.5);
+            Ais_child=colorize(Ais_child,Quantity_NOC_BLUE2,0.5);
         }
 
         Ais_shape->AddChild(Ais_child);
@@ -604,7 +604,7 @@ std::vector<Handle(AIS_Shape)> draw_primitives::draw_3d_arc_lenght(gp_Pnt point1
             std::cout<<"Px:"<<p.X()<< " Py:" << p.Y() << " Pz:" << p.Z() <<std::endl;
 
             Handle(AIS_Shape) Ais_shape=draw_3d_sphere(5,p);
-            Ais_shape=colorize(Ais_shape,Quantity_NOC_BLUE,0);
+            Ais_shape=colorize(Ais_shape,Quantity_NOC_BLUE2,0);
             shapevec.push_back(Ais_shape);
         }
 

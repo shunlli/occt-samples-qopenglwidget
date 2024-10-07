@@ -338,7 +338,7 @@ void OcctQtViewer::dumpGlInfo (bool theIsBasic)
         }
     }
 
-    Message::SendInfo (anInfo);
+//    Message::SendInfo (anInfo);
     //! myGlInfo = QString::fromUtf8 (anInfo.ToCString());
 }
 
@@ -361,7 +361,8 @@ void OcctQtViewer::initializeGL()
     if (!aWindow.IsNull())
     {
         aWindow->SetSize (aViewSize.x(), aViewSize.y());
-        myView->SetWindow (aWindow, (Aspect_RenderingContext) glXGetCurrentContext());
+        // myView->SetWindow (aWindow, (Aspect_RenderingContext) glXGetCurrentContext());
+        myView->SetWindow (aWindow, (Aspect_RenderingContext) wglGetCurrentContext());
 
         dumpGlInfo (true);
     }
@@ -378,7 +379,8 @@ void OcctQtViewer::initializeGL()
 #endif
         aWindow->SetNativeHandle (aNativeWin);
         aWindow->SetSize (aViewSize.x(), aViewSize.y());
-        myView->SetWindow (aWindow, (Aspect_RenderingContext) glXGetCurrentContext());
+        // myView->SetWindow (aWindow, (Aspect_RenderingContext) glXGetCurrentContext());
+        myView->SetWindow (aWindow, (Aspect_RenderingContext) wglGetCurrentContext());
         dumpGlInfo (true);
 
         myContext->Display (myViewCube, 0, 0, false);
@@ -526,7 +528,7 @@ void OcctQtViewer::paintGL()
     if (!aDefaultFbo->InitWrapper (aGlCtx))
     {
         aDefaultFbo.Nullify();
-        Message::DefaultMessenger()->Send ("Default FBO wrapper creation failed", Message_Fail);
+    //    Message::DefaultMessenger()->Send ("Default FBO wrapper creation failed", Message_Fail);
         QMessageBox::critical (0, "Failure", "Default FBO wrapper creation failed");
         QApplication::exit (1);
         return;

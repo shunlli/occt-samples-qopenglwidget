@@ -62,7 +62,7 @@ void gcode_parser::print_results(std::vector<BLOCK> blkvec, bool debug){
             std::cout<<std::fixed<<"P:"<<b.P<<std::endl;
             std::cout<<std::fixed<<"S:"<<b.S<<std::endl;
             std::cout<<std::fixed<<"F:"<<b.F<<std::endl;
-            std::cout<<std::fixed<<"comment:"<<b.comment<<std::endl;
+//            std::cout<<std::fixed<<"comment:"<<b.comment<<std::endl;
         }
     }
 }
@@ -154,7 +154,7 @@ gcode_parser::BLOCK gcode_parser::chunck_id_value_to_block(FILTER f, BLOCK b, bo
             std::cout<<std::fixed<<"P:"<<b.P<<std::endl;
             std::cout<<std::fixed<<"S:"<<b.S<<std::endl;
             std::cout<<std::fixed<<"F:"<<b.F<<std::endl;
-            std::cout<<std::fixed<<"Comment:"<<b.comment<<std::endl;
+//            std::cout<<std::fixed<<"Comment:"<<b.comment<<std::endl;
         }
     }
     return b;
@@ -162,20 +162,20 @@ gcode_parser::BLOCK gcode_parser::chunck_id_value_to_block(FILTER f, BLOCK b, bo
 
 gcode_parser::FILTER gcode_parser::parse_chunck_into_id_and_value(FILTER f, bool debug){
 
-    if(debug){std::cout<<"Funtion:parse_chunck_into_id_and_value"<<std::endl;}
-    f.chunkvec_id_value.resize(f.chunkvec.size());
-    for(unsigned int i=0; i<f.chunkvec.size(); i++){
-        f.chunkvec_id_value[i].first=f.chunkvec[i][0];
-        std::string val=f.chunkvec[i];
-        val.erase(0,1);
-        //! Avoid a empty string, can be caused by a typo.
-        if(val.size()==0){
-            val="0";
-        }
-        f.chunkvec_id_value[i].second=std::stod(val);
-        if(debug){std::cout<<"id:"<<f.chunkvec_id_value[i].first<< " value:"<<f.chunkvec_id_value[i].second<<std::endl;}
-    }
-    if(debug){std::cout<<""<<std::endl;}
+    // if(debug){std::cout<<"Funtion:parse_chunck_into_id_and_value"<<std::endl;}
+    // f.chunkvec_id_value.resize(f.chunkvec.size());
+    // for(unsigned int i=0; i<f.chunkvec.size(); i++){
+    //     f.chunkvec_id_value[i].first=f.chunkvec[i][0];
+    //     std::string val=f.chunkvec[i];
+    //     val.erase(0,1);
+    //     //! Avoid a empty string, can be caused by a typo.
+    //     if(val.size()==0){
+    //         val="0";
+    //     }
+    //     f.chunkvec_id_value[i].second=std::stod(val);
+    //     if(debug){std::cout<<"id:"<<f.chunkvec_id_value[i].first<< " value:"<<f.chunkvec_id_value[i].second<<std::endl;}
+    // }
+    // if(debug){std::cout<<""<<std::endl;}
     return f;
 }
 
@@ -199,11 +199,11 @@ gcode_parser::FILTER gcode_parser::filter_line_comments(FILTER f, bool debug){
             f.comment+=f.brutoline[i];
         }
     }
-    if(debug){std::cout<<"Funtion:filter_line_comments"<<std::endl;}
-    if(debug){std::cout<<"brutoline:"<<f.brutoline<<std::endl;}
-    if(debug){std::cout<<"nettoline:"<<f.nettoline<<std::endl;}
-    if(debug){std::cout<<"comment:"<<f.comment<<std::endl;}
-    if(debug){std::cout<<""<<std::endl;}
+    // if(debug){std::cout<<"Funtion:filter_line_comments"<<std::endl;}
+    // if(debug){std::cout<<"brutoline:"<<f.brutoline<<std::endl;}
+    // if(debug){std::cout<<"nettoline:"<<f.nettoline<<std::endl;}
+    // if(debug){std::cout<<"comment:"<<f.comment<<std::endl;}
+    // if(debug){std::cout<<""<<std::endl;}
     return f;
 }
 
@@ -219,7 +219,7 @@ gcode_parser::FILTER gcode_parser::parse_a_line_into_chunks(FILTER f, bool debug
         }
         if(f.nettoline[i]==' ' || i==f.nettoline.size()-1){
             f.chunkvec.push_back(chunk);
-            if(debug){std::cout<<"chunk:"<<chunk<<std::endl;}
+//            if(debug){std::cout<<"chunk:"<<chunk<<std::endl;}
             chunk.clear();
         }
     }
@@ -238,9 +238,9 @@ std::vector<std::string> gcode_parser::read_file(std::string filename){
     std::string str;
     newfile.open(filename, std::ios::in);
     if(newfile.is_open()){
-        while(getline(newfile,str)){
-            strvec.push_back(str);
-        }
+        // while(getline(newfile,str)){
+        //     strvec.push_back(str);
+        // }
         newfile.close();
     }
     return strvec;
